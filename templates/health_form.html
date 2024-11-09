@@ -4,26 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Health Risk Assessment</title>
+    <title>Intake form</title>
 </head>
 <body>
     <div class="container">
-        <h1>Health Risk Assessment</h1>
+        <h1>Intake Form</h1>
         <form method="POST">
-            <label for="age">Age:</label>
-            <input type="number" id="age" name="age" required><br><br>
+            <h2>Your appointment is confirmed. Please fill out intake form now or at the time of your appointment.</h2>
+            <div class = "general">
+                <h3>General Questions</h3>
+                <!--reason for visit-->
+                <fieldset> <!--gpt prompt: how to create a checkbox group without bootstrap-->
+                    <legend>Reason for visit</legend>
 
-            <input type="submit" value="Submit">
-        </form>
+                    <label><!--https://wastedpotential.com/html-multi-checkbox-set-the-correct-way-to-group-checkboxes/-->
+                        <input type = "checkbox" name = "reason[]" value = "pink-eye"> Redness
+                    </label>
+                    <label>
+                        <input type = "checkbox" name = "reason[]" value = "blurry-vision"> Blurry vision
+                    </label>
+                    <label>
+                        <input type = "checkbox" name = "reason[]" value = "eye-itching"> Eye itching
+                    </label>
+                    <label>
+                        <input type = "checkbox" name = "reason[]" value = "dry-eye"> Dry eye
+                    </label>
+                </fieldset>
 
-        {% if risk_factors %}
-            <h2>Potential Risk Factors:</h2>
-            <ul>
-                {% for factor in risk_factors %}
-                    <li>{{ factor }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+                <!--eye exam, radio buttons-->
+                <fieldset>
+                    <legend>Have you had an eye exam in the past 2 years?</legend>
+                    <label>
+                        <input type = "radio" name = "eye-exam" value = "yes"> Yes
+                    </label>
+                    <label>
+                        <input type = "radio" name = "eye-exam" value = "no"> NO
+                    </label>
+                    <label>
+                        <input type = "radio" name = "eye-exam" value = "never"> I've never had an eye exam
+                    </label>
+                </fieldset><!--end of eye exam, radio buttons-->
+
+                <fieldset>
+                    <legend>Have you had the following eye surgeries?</legend>
+                    <label>
+                        <input type = "checkbox" name = "surgeries" value = "cataract"> Cataract
+                    </label>
+                    <label>
+                        <input type = "checkbox" name = "surgeries" value = "lasik"> LASIK
+                    </label>
+                    <label>
+                        <input type = "checkbox" name = "surgeries" value = "glaucoma"> Glaucoma
+                    </label>
+                    <label>
+                        <input type = "checkbox" name = "surgeries" value = "none"> None
+                    </label>
+                </fieldset>
+                <input type="submit" value="Submit">
+            </div><!--end of general div-->
+        </form><!--end of form-->
     </div>
+
+    <!--Javascript code-->
+    <script>
+        // handle validation
+        // also, prevent form submission if user has had surgery, alerting them to see a doctor
+    </script>
 </body>
 </html>
