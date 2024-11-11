@@ -1,12 +1,13 @@
 1) If youve created a new branch named branch_name on the website, run
 these commands
     Step 1: Run 'git fetch origin' to fetch remote branches.
-    Step 2: Switch to the html branch with 'git checkout html'.
+    Step 2: Switch to the branch_name branch with 'git checkout branch_name'.
     Step 3: Use 'git branch' to confirm you're on the correct branch.
 
 2) commit changes to a branch
     Check if you're on the right branch: 'git branch'
     Stage your changes: 'git add .'
     Commit changes to main: 'git commit -m "Your commit message"'
-    Push to GitHub: 'git push origin main'
-    Switch to html: 'git checkout html'
+    Push to GitHub: 'git push origin branch_name'
+
+    
