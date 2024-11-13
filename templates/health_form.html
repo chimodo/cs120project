@@ -4,26 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Health Risk Assessment</title>
+    <title>Intake form</title>
 </head>
 <body>
     <div class="container">
-        <h1>Health Risk Assessment</h1>
-        <form method="POST">
-            <label for="age">Age:</label>
-            <input type="number" id="age" name="age" required><br><br>
+        <h1>Intake Form</h1>
+        <form method="POST" name = "frmIntake" id = "frmIntake" onsubmit = "return validate()">
+            <h2>Your appointment is confirmed. Please fill out intake form now or at the time of your appointment.</h2>
+            <div class = "general">
+                <h3>General Questions</h3>
+                <!--reason for visit-->
+                <fieldset> <!--gpt prompt: how to create a checkbox group without bootstrap-->
+                    <legend>Reason for visit</legend>
 
-            <input type="submit" value="Submit">
-        </form>
+                    <label><!--this allows responses to be passed as a list. Got it from: https://wastedpotential.com/html-multi-checkbox-set-the-correct-way-to-group-checkboxes/-->
+                        <input type = "checkbox" name = "reason[]" value = "pink-eye"> Redness
+                    </label>
+                    <label>
+                        <input type = "checkbox" name = "reason[]" value = "blurry-vision"> Blurry vision
+                    </label>
+                    <label>
+                        <input type = "checkbox" name = "reason[]" value = "eye-itching"> Eye itching
+                    </label>
+                    <label>
+                        <input type = "checkbox" name = "reason[]" value = "dry-eye"> Dry eye
+                    </label>
+                </fieldset>
 
-        {% if risk_factors %}
-            <h2>Potential Risk Factors:</h2>
-            <ul>
-                {% for factor in risk_factors %}
-                    <li>{{ factor }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+                <!--eye exam, radio buttons-->
+                <fieldset>
+                    <legend>Have you had an eye exam in the past 2 years?</legend>
+                    <label>
+                        <input type = "radio" name = "eye-exam" value = "yes" id = "eye-exam"> Yes
+                    </label>
+                    <label>
+                        <input type = "radio" name = "eye-exam" value = "no" id = "eye-exam"> NO
+                    </label>
+                    <label>
+                        <input type = "radio" name = "eye-exam" value = "never" id = "eye-exam"> I've never had an eye exam
+                    </label>
+                </fieldset><!--end of eye exam, radio buttons-->
+
+                <fieldset>
+                    <legend>Have you had the following eye surgeries?</legend>
+                    <label>
+                        <input type = "checkbox" name = "surgeries" value = "cataract" class = "surgery-option"> Cataract
+                    </label>
+                    <label>
+                        <input type = "checkbox" name = "surgeries" value = "lasik" class = "surgery-option"> LASIK
+                    </label>
+                    <label>
+                        <input type = "checkbox" name = "surgeries" value = "glaucoma" class = "surgery-option"> Glaucoma
+                    </label>
+                    <!--label>
+                        <input type = "checkbox" name = "surgeries" value = "none" id = "no-surgery"> None
+                    </label-->
+                </fieldset>
+                <fieldset>
+                    <legend>Do you have any known allergies?</legend>
+                    <label>
+                        <input type = "checkbox" name = "allergies[]" value = "pollen"> Pollen
+                    </label>
+                    <label>
+                        <input type = "checkbox" name = "allergies[]" value = "animal-dander"> Animal Dander
+                    </label>
+                    <label>
+                        <input type = "checkbox" name = "allergies[]" value = "mold"> Mold
+                    </label>
+                    <label>
+                        <input type = "checkbox" name = "allergies[]" value = "mold"> Other/NA
+                    </label>
+                </fieldset>
+                <button>continue</button>
+                   
+            </div><!--end of general div-->
+            <!--family history portion-->
+            <h4>Do you or anyone in your family have the conditions below</h4>
+            <div class = history>
+                
+                <fieldset style = "align-items: stretch;"><!---->
+                    <legend>Ocular History</legend>
+
+                    <div class = "ocular-histr-self" style = "width: 20; height: 150; float: left">
+                        <input type = "checkbox" name = "ocular-histr-self[]" value = "cataract">
+                        <input type = "checkbox" name = "ocular-histr-self[]" value = "Glaucoma">
+                        <input type = "checkbox" name = "ocular-histr-self[]" value = "blindness">
+                        <input type = "checkbox" name = "ocular-histr-self[]" value = "Other">
+                    </div>
+                    <div class = "ocular-histr-fam" style = "width: 20; height: 150; float: left">
+                        <input type = "checkbox" name = "ocular-histr-fam[]" value = "cataract">
+                        <input type = "checkbox" name = "ocular-histr-fam[]" value = "Glaucoma">
+                        <input type = "checkbox" name = "ocular-histr-fam[]" value = "blindness">
+                        <input type = "checkbox" name = "ocular-histr-fam[]" value = "Other">
+                    </div>
+                    <div class = "ocular-histr-labels">
+                        <label>Cataract</label>
+                        <label>Glaucoma</label>
+                        <label>Loss of vision/Blindness</label>
+                        <label>Other</label>
+                    </div>
+
+                </fieldset> <!--end of ocular histr-->
+            </div> <!--history div-->
+            <div><input type="submit" value="Submit"></div>
+        </form><!--end of form-->
     </div>
+
+    <!--Javascript code-->
+    <!--these videos helped https://www.youtube.com/watch?v=itrkdEJaD-U&list=PLdE8ESr9Th_tQCsbtd-WzpMSg09rPtpjC-->
+    <!--https://www.youtube.com/watch?v=In0nB0ABaUk&t=32s-->
+    <script type = "text/javascript">
+        // handle validation
+
+        // uncheck surgery boxes if none is checked
+
+        // also, prevent form submission if user has had surgery, alerting them to see a doctor
+        function validate()
+        {   
+            return true;
+        }
+    </script>
 </body>
 </html>
