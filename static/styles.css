@@ -1,0 +1,51 @@
+/* Special thanks to chatgpt we dont know css*/
+
+table {
+    width: 35%;
+    border-collapse: collapse; /* Remove extra spacing between cells */
+    margin-top: 10px;
+    margin: auto;
+  }
+  
+  th, td {
+    border: 1px solid #ccc; /* Add a border for clarity */
+    padding: 8px;
+    text-align: center; /* Center-align content */
+  }
+  
+  th {
+    background-color: #f4f4f4; /* Light gray background for headers */
+    font-weight: bold;
+  }
+  
+  td label {
+    margin: 0; /* Remove extra spacing around labels */
+  }
+
+  /*prompt: how do i style the form*/
+
+  /* General container styling */
+  
+.form-container {
+  max-width: 600px;
+  margin: 20px auto; /* Center the form on the page */
+  padding: 15px;
+  background-color: #f9f9f9; /* Light background for contrast */
+  border: 1px solid #ddd; /* Border for subtle separation */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Fieldset and Legend */
+fieldset {
+  border: none; /* Remove default border */
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
