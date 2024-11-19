@@ -10,108 +10,49 @@
 </head>
 <body>
     <div class="container">
-        <h1>Intake Form</h1>
+        <header>
+          <h1>Intake Form</h1>
+          <h3>Your appointment is confirmed. Please fill out intake form now or at the time of your appointment.</h3>
+          <div>
+          </div>
+        </header>
         <form class = "frmIntake" method="POST" name = "frmIntake" id = "frmIntake" onsubmit = "return validate()">
-            <h2>Your appointment is confirmed. Please fill out intake form now or at the time of your appointment.</h2>
+            
             <div  name = "general">
                 <h3>General Questions</h3>
                 <!--reason for visit-->
-                <div class = "vstack gap-3"> <!--gpt prompt: how to create a checkbox group without bootstrap-->
+                <div class = "reason"> <!--gpt prompt: how to create a checkbox group without bootstrap-->
                     <legend>Reason for visit</legend>
-
+                    <!--Validation: please make sure at least one checkbox is selected, and that reason and where are not blank-->
                     <label><!--this allows responses to be passed as a list. Got it from: https://wastedpotential.com/html-multi-checkbox-set-the-correct-way-to-group-checkboxes/-->
                         <div class = "hstack gap-3"> <!--pink eye horizontal-->
-                            <input type = "checkbox" name = "reason" value = "pink-eye"> Redness
-                            <div class="dropdown">
-                                <button type = "checkbox" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Severity
-                                </button>
-                                <!-- </button> -->
-                                <ul class="dropdown-menu">
-                                  <input class="dropdown-item" type = "radio" name = "severity">Mild
-                                  <input class="dropdown-item" type = "radio" name = "severity">Moderate
-                                  <input class="dropdown-item" type = "radio" name = "severity">Severe
-                                </ul>
-                              </div>
-                              <div class="dropdown">
-                                <button type = "checkbox" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Where
-                                </button>
-                                <!-- </button> -->
-                                <ul class="dropdown-menu">
-                                  <input class="dropdown-item" type = "radio" name = "where">left
-                                  <input class="dropdown-item" type = "radio" name = "where">Right
-                                  <input class="dropdown-item" type = "radio" name = "where">Both
-                                </ul>
-                              </div>
+                            <input type = "checkbox" name = "reason" value = "redness"> Redness
                         </div>   
                     </label>
                     <label>
                         <div class = "hstack gap-3">
-                            <input type = "checkbox" name = "reason" value = "pink-eye"> Blurry Vision
-                            <div class="dropdown">
-                                <button type = "checkbox" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Severity
-                                </button>
-                                <!-- </button> -->
-                                <ul class="dropdown-menu">
-                                  <input class="dropdown-item" type = "radio" name = "severity">Mild
-                                  <input class="dropdown-item" type = "radio" name = "severity">Moderate
-                                  <input class="dropdown-item" type = "radio" name = "severity">Severe
-                                </ul>
-                              </div>
-                              <div class="dropdown">
-                                <button type = "checkbox" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Where
-                                </button>
-                                <!-- </button> -->
-                                <ul class="dropdown-menu">
-                                  <input class="dropdown-item" type = "radio" name = "where">left
-                                  <input class="dropdown-item" type = "radio" name = "where">Right
-                                  <input class="dropdown-item" type = "radio" name = "where">Both
-                                </ul>
-                              </div>
+                            <input type = "checkbox" name = "reason" value = "blurry-vision"> Blurry Vision
                         </div>
                     </label>
                     <label>
                         <div class = "hstack gap-3">
-                            <input type = "checkbox" name = "reason" value = "pink-eye"> Eye Pain
-                            <div class="dropdown">
-                                <button type = "checkbox" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Severity
-                                </button>
-                                <!-- </button> -->
-                                <ul class="dropdown-menu">
-                                  <input class="dropdown-item" type = "radio" name = "severity">Mild
-                                  <input class="dropdown-item" type = "radio" name = "severity">Moderate
-                                  <input class="dropdown-item" type = "radio" name = "severity">Severe
-                                </ul>
-                              </div>
-                              <div class="dropdown">
-                                <button type = "checkbox" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Where
-                                </button>
-                                <!-- </button> -->
-                                <ul class="dropdown-menu">
-                                  <input class="dropdown-item" type = "radio" name = "where">left
-                                  <input class="dropdown-item" type = "radio" name = "where">Right
-                                  <input class="dropdown-item" type = "radio" name = "where">Both
-                                </ul>
-                              </div>
+                            <input type = "checkbox" name = "reason" value = "pink-pain"> Eye Pain
                         </div>
                     </label>
                     <label>
                         <div class = "hstack gap-3">
-                            <input type = "checkbox" name = "reason" value = "pink-eye"> Other
+                            <input type = "checkbox" name = "reason" value = "other"> Other
                             <div class="dropdown">
                                 <button type = "checkbox" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                   Severity
                                 </button>
                                 <!-- </button> -->
                                 <ul class="dropdown-menu">
-                                  <input class="dropdown-item" type = "radio" name = "severity">Mild
-                                  <input class="dropdown-item" type = "radio" name = "severity">Moderate
-                                  <input class="dropdown-item" type = "radio" name = "severity">Severe
+                                  <input class="dropdown-item" type = "radio" name = "severity" value = "10245">Urgent
+                                  <input class="dropdown-item" type = "radio" name = "severity" value = "10246">Serious
+                                  <input class="dropdown-item" type = "radio" name = "severity" value = "10247">Mild
+                                  <input class="dropdown-item" type = "radio" name = "severity" value = "10248">None
+                                  <input class="dropdown-item" type = "radio" name = "severity" value = "10249">Unknown
                                 </ul>
                               </div>
                               <div class="dropdown">
@@ -120,13 +61,17 @@
                                 </button>
                                 <!-- </button> -->
                                 <ul class="dropdown-menu">
-                                  <input class="dropdown-item" type = "radio" name = "where">left
-                                  <input class="dropdown-item" type = "radio" name = "where">Right
-                                  <input class="dropdown-item" type = "radio" name = "where">Both
+                                  <input class="dropdown-item" type = "radio" name = "where" value = "OD">Right
+                                  <input class="dropdown-item" type = "radio" name = "where" value = "OS">Left
+                                  <input class="dropdown-item" type = "radio" name = "where" value = "OU">Both
                                 </ul>
-                              </div>
+                              </div>      
                         </div>
                     </label>
+                    <!--onset date-->
+                    <div>
+                      <input type = "date" name = "onset">Onset Date
+                    </div><!--end of onset date-->
                 </div>
 
                 <!--eye exam, radio buttons-->
@@ -154,9 +99,9 @@
                     <label>
                         <input type = "checkbox" name = "surgeries" value = "glaucoma" class = "surgery-option"> Glaucoma
                     </label>
-                    <!--label>
+                    <label>
                         <input type = "checkbox" name = "surgeries" value = "none" id = "no-surgery"> None
-                    </label-->
+                    </label>
                 </fieldset>
                 <fieldset>
                     <legend>Do you have any known allergies?</legend>
@@ -192,23 +137,23 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td><input type="checkbox" name="ocular-histr-self[]" value="cataract"></td>
-                          <td><input type="checkbox" name="ocular-histr-fam[]" value="cataract"></td>
+                          <td><input type="checkbox" name="ocular-histr-self" value="cataract"></td>
+                          <td><input type="checkbox" name="ocular-histr-fam" value="cataract"></td>
                           <td><label>Cataract</label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="ocular-histr-self[]" value="glaucoma"></td>
-                          <td><input type="checkbox" name="ocular-histr-fam[]" value="glaucoma"></td>
+                          <td><input type="checkbox" name="ocular-histr-self" value="glaucoma"></td>
+                          <td><input type="checkbox" name="ocular-histr-fam" value="glaucoma"></td>
                           <td><label>Glaucoma</label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="ocular-histr-self[]" value="blindness"></td>
-                          <td><input type="checkbox" name="ocular-histr-fam[]" value="blindness"></td>
+                          <td><input type="checkbox" name="ocular-histr-self" value="blindness"></td>
+                          <td><input type="checkbox" name="ocular-histr-fam" value="blindness"></td>
                           <td><label>Blindness</label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="ocular-histr-self[]" value="other"></td>
-                          <td><input type="checkbox" name="ocular-histr-fam[]" value="other"></td>
+                          <td><input type="checkbox" name="ocular-histr-self" value="other"></td>
+                          <td><input type="checkbox" name="ocular-histr-fam" value="other"></td>
                           <td><label>Other</label></td>
                         </tr>
                       </tbody>
@@ -231,29 +176,64 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td><input type="checkbox" name="medical-histr-self[]" value="diabetes"></td>
-                          <td><input type="checkbox" name="medical-histr-fam[]" value="diabetes"></td>
+                          <td><input type="checkbox" name="medical-histr-self" value="diabetes"></td> <!--prev medical-histr-self[]-->
+                          <td><input type="checkbox" name="medical-histr-fam" value="diabetes"></td>
                           <td><label>Diabetes</label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="medical-histr-self[]" value="hypertension"></td>
-                          <td><input type="checkbox" name="medical-histr-fam[]" value="hypertension"></td>
+                          <td><input type="checkbox" name="medical-histr-self" value="hypertension"></td>
+                          <td><input type="checkbox" name="medical-histr-fam" value="hypertension"></td>
                           <td><label>Hypertension</label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="medical-histr-self[]" value="auto-immune"></td>
-                          <td><input type="checkbox" name="medical-histr-fam[]" value="auto-immune"></td>
+                          <td><input type="checkbox" name="medical-histr-self" value="auto-immune"></td>
+                          <td><input type="checkbox" name="medical-histr-fam" value="auto-immune"></td>
                           <td><label>Auto imune disease</label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="medical-histr-self[]" value="other"></td>
-                          <td><input type="checkbox" name="medical-histr-fam[]" value="other"></td>
+                          <td><input type="checkbox" name="medical-histr-self" value="other"></td>
+                          <td><input type="checkbox" name="medical-histr-fam" value="other"></td>
                           <td><label>Other</label></td>
                         </tr>
                       </tbody>
                     </table>
                   </fieldset>
             </div> <!--medical history div-->
+
+            <!--Lifestyle div-->
+            <div name = "lifestyle">
+              <fieldset>
+                <legend>Select all that apply</legend>
+                <label>
+                    <input type = "checkbox" name = "lifestyle[]" value = "alchohol"> Alchohol
+                </label>
+                <label>
+                    <input type = "checkbox" name = "lifestyle[]" value = "drugs"> Recreational Drugs
+                </label>
+                <label>
+                    <input type = "checkbox" name = "lifestyle[]" value = "smoke"> Smoking
+                </label>
+                <label>
+                    <input type = "checkbox" name = "lifestyle[]" value = "none"> None
+                    <!--Javascript: please uncheck the others if user clicks none, and vice versa-->
+                </label>
+              </fieldset><!--End of lifestyle-->
+
+              <!--screentime-->
+              <fieldset>
+                <legend>Have you had an eye exam in the past 2 years?</legend>
+                <label>
+                    <input type = "radio" name = "screentime>6h" value = "yes" id = "screenitme"> Yes
+                </label>
+                <label>
+                    <input type = "radio" name = "screentime>6h" value = "no" id = "screentime"> NO
+                </label>
+                <label>
+                    <input type = "radio" name = "screentime>6h" value = "never" id = "screentime"> I've never looked at a screen
+                </label>
+              </fieldset><!--end of screentime, radio buttons-->
+
+            </div>
 
 
             <div><input type="submit" value="Submit"></div>
@@ -264,15 +244,11 @@
     <!--these videos helped https://www.youtube.com/watch?v=itrkdEJaD-U&list=PLdE8ESr9Th_tQCsbtd-WzpMSg09rPtpjC-->
     <!--https://www.youtube.com/watch?v=In0nB0ABaUk&t=32s-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-        // handle validation
+    </script>
 
-        // uncheck surgery boxes if none is checked
-
-        // also, prevent form submission if user has had surgery, alerting them to see a doctor
-        function validate()
-        {   
-            return true;
-        }
+    <!--link our local script.js-->
+    <script src = "static/script.js">
+        // I creates a separate file for the javascript
     </script>
 </body>
 </html>
