@@ -6,6 +6,7 @@ health_data = {} # dictionary will store responses
 
 @app.route('/', methods = ['GET','POST'])
 def authenticate():
+    message = ''
     if request.method == "POST":
         info = request.form.to_dict(flat=False) # flat = false allows our dictionary to be nested therefore all checkbox choices will be returned
         # info dictionary format {'name': 'Alice', 'surname': 'Smith', 'email': 'Alice@example.com'}
@@ -14,7 +15,8 @@ def authenticate():
             return render_template("health_form.html")
         else:
             message = "Your information does not match our records"
-    return render_template("index.html", message = "Your information does not match our records")
+            return render_template("index.html", message = message)
+    return render_template("index.html")
     
 
 @app.route('/health_form.html', methods = ['GET','POST']) # gets data from html form
@@ -40,9 +42,7 @@ def get_health_data():
 def find_user(info):
     # TODO use info in the dictionary, look for a line with the same name, surname and email. All 3 should match
     # info dictionary format {'name': 'Alice', 'surname': 'Smith', 'email': 'Alice@example.com'}
-    # code
     return False # change back to false later
-    
 
 def create_file(health_data):
     # append patient details from scheduling to json file

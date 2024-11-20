@@ -22,6 +22,12 @@
             </label>  
         </fieldset>
         <input type = "submit">Submit
+
+        {% if message %}
+            <div class="error-message">
+                <p style="color: red;">{{ message }}</p>
+            </div>
+        {% endif %}
     </form>
 
     <!--bootstrap javascript-->
