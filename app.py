@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request
 import csv
+from json import load, dump, JSONDecodeError
+from os import makedirs, path
+
 # this is just a template that we will build upon
 app = Flask(__name__)
 
@@ -76,10 +79,37 @@ def find_user(info):
     return False  # No match found or error occurred
 
 def create_file(health_data):
-    # append patient details from scheduling to json file
-    # you can use the jsonfy function
-    # save it to separate folder
-    pass # temporarily ignore this function
+     """
+    Append patient details to a JSON file in a specified folder.
+    
+    :param health_data: Dictionary containing patient details to be stored.
+    """
+    # Define the path to the JSON file
+    folder_path = 'patient_data'
+    file_path = path.join(folder_path, 'health_data.json')
+
+    # Ensure the directory exists
+    makedirs(folder_path, exist_ok=True)
+
+    # Check if the file exists and load existing data
+    if path.exists(file_path):
+        with open(file_path, 'r', encoding='utf-8') as file:
+            try:
+                data = load(file)  # Load existing JSON data
+            except JSONDecodeError:
+                data = []  # Initialize with an empty list if the file is corrupted or empty
+    else:
+        data = []  # Initialize with an empty list if the file does not exist
+
+    # Append the new health data to the list
+    data.append(health_data)
+
+    # Write the updated data back to the file
+    with open(file_path, 'w', encoding='utf-8') as file:
+        dump(data, file, indent=4)
+
+    print(f"Patient data successfully saved to {file_path}.")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
