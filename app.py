@@ -1,4 +1,7 @@
 from flask import Flask, render_template, request
+from json import load, dump, JSONDecodeError
+from os import makedirs, path
+
 # this is just a template that we will build upon
 app = Flask(__name__)
 
@@ -38,15 +41,72 @@ def get_health_data():
 
 
 def find_user(info):
-    # TODO use info in the dictionary, look for a line with the same name, surname and email. All 3 should match
-    # info dictionary format {'name': 'Alice', 'surname': 'Smith', 'email': 'Alice@example.com'}
-    return True # change back to false later
+    """
+    Search for a user in the CSV file based on a dictionary containing user information.
+    
+    :param info: Dictionary containing user information, such as {'name': 'Alice', 'surname': 'Smith', 'email': 'alice@example.com'}
+    :return: True if the user is found, False otherwise.
+    """
+    try:
+        # Set the path to the CSV file in the 'scheduling_data' folder
+        file_path = 'scheduling_data/schedule.csv'
+        
+        if not info:
+            raise ValueError("The 'info' dictionary must not be empty.")
+
+        with open(file_path, mode='r', newline='', encoding='utf-8') as file:
+            reader = csv.DictReader(file)  # Read the CSV into a dictionary-like format
+            
+            # Loop through each row in the CSV
+            for row in reader:
+                matches = True
+                for key, value in info.items():
+                    row_value = row[key].strip().lower()  # Remove any leading/trailing spaces and lower case
+                    search_value = value[0].strip().lower() if isinstance(value, list) else value.strip().lower()
+                    
+                    if row_value != search_value:
+                        matches = False
+                        break
+
+                if matches:
+                    return True  # Found a match
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    return False  # No match found or error occurred
 
 def create_file(health_data):
-    # append patient details from scheduling to json file
-    # you can use the jsonfy function
-    # save it to separate folder
-    pass # temporarily ignore this function
+    """
+    Append patient details to a JSON file in a specified folder.
+    
+    :param health_data: Dictionary containing patient details to be stored.
+    """
+    # Define the path to the JSON file
+    folder_path = 'patient_data'
+    file_path = path.join(folder_path, 'health_data.json')
+
+    # Ensure the directory exists
+    makedirs(folder_path, exist_ok=True)
+
+    # Check if the file exists and load existing data
+    if path.exists(file_path):
+        with open(file_path, 'r', encoding='utf-8') as file:
+            try:
+                data = load(file)  # Load existing JSON data
+            except JSONDecodeError:
+                data = []  # Initialize with an empty list if the file is corrupted or empty
+    else:
+        data = []  # Initialize with an empty list if the file does not exist
+
+    # Append the new health data to the list
+    data.append(health_data)
+
+    # Write the updated data back to the file
+    with open(file_path, 'w', encoding='utf-8') as file:
+        dump(data, file, indent=4)
+
+    print(f"Patient data successfully saved to {file_path}.")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
