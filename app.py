@@ -76,6 +76,7 @@ def find_user(info):
     return False  # No match found or error occurred
 
 def create_file(health_data):
+    #Second commit in order to add my gpt prompt
     """
     Append patient details to a JSON file in a specified folder.
     
