@@ -41,7 +41,8 @@ def find_user(info):
     # TODO use info in the dictionary, look for a line with the same name, surname and email. All 3 should match
     # info dictionary format {'name': 'Alice', 'surname': 'Smith', 'email': 'Alice@example.com'}
     # code
-    return True # change back to false later
+    return False # change back to false later
+    
 
 def create_file(health_data):
     # append patient details from scheduling to json file
