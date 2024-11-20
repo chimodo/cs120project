@@ -85,7 +85,8 @@ def create_file(health_data):
     :param health_data: Dictionary containing patient details to be stored.
     """
     # Define the path to the JSON file
-    folder_path = 'patient_data'
+    #folder_path = 'patient_data'
+    folder_path = 'scheduling_data'
     file_path = path.join(folder_path, 'health_data.json')
 
     # Ensure the directory exists
