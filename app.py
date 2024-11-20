@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import csv
 # this is just a template that we will build upon
 app = Flask(__name__)
 
@@ -8,7 +9,7 @@ health_data = {} # dictionary will store responses
 def authenticate():
     message = ''
     if request.method == "POST":
-        info = request.form.to_dict(flat=False) # flat = false allows our dictionary to be nested therefore all checkbox choices will be returned
+        info = request.form.to_dict() # flat = false allows our dictionary to be nested therefore all checkbox choices will be returned
         # info dictionary format {'name': 'Alice', 'surname': 'Smith', 'email': 'Alice@example.com'}
         print(info)
         if find_user(info): # passed into find user function which looks for the name
@@ -40,9 +41,39 @@ def get_health_data():
 
 
 def find_user(info):
-    # TODO use info in the dictionary, look for a line with the same name, surname and email. All 3 should match
-    # info dictionary format {'name': 'Alice', 'surname': 'Smith', 'email': 'Alice@example.com'}
-    return False # change back to false later
+    """
+    Search for a user in the CSV file based on a dictionary containing user information.
+    
+    :param info: Dictionary containing user information, such as {'name': 'Alice', 'surname': 'Smith', 'email': 'alice@example.com'}
+    :return: True if the user is found, False otherwise.
+    """
+    try:
+        # Set the path to the CSV file in the 'scheduling_data' folder
+        file_path = 'scheduling_data/schedule.csv'
+        
+        if not info:
+            raise ValueError("The 'info' dictionary must not be empty.")
+
+        with open(file_path, mode='r', newline='', encoding='utf-8') as file:
+            reader = csv.DictReader(file)  # Read the CSV into a dictionary-like format
+            
+            # Loop through each row in the CSV
+            for row in reader:
+                matches = True
+                for key, value in info.items():
+                    row_value = row[key].strip().lower()  # Remove any leading/trailing spaces and lower case
+                    search_value = value[0].strip().lower() if isinstance(value, list) else value.strip().lower()
+                    
+                    if row_value != search_value:
+                        matches = False
+                        break
+
+                if matches:
+                    return True  # Found a match
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    return False  # No match found or error occurred
 
 def create_file(health_data):
     # append patient details from scheduling to json file
