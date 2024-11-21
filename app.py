@@ -6,7 +6,7 @@ from os import makedirs, path
 # this is just a template that we will build upon
 app = Flask(__name__)
 
-health_data = {} # dictionary will store responses
+info = {} # dictionary will store name, surname, email
 
 @app.route('/', methods = ['GET','POST'])
 def authenticate():
@@ -34,6 +34,7 @@ def get_health_data():
         #print(health_data) # checking if appending to dict successful
         #print(visit_reason)
 
+        create_file(health_data)
         # TODO use file io to store the results into a relevent file
         # (we should probably store the form responses in a file as well.
         # doctors might need that info as well )
@@ -78,15 +79,12 @@ def find_user(info):
 
     return False  # No match found or error occurred
 
-def create_file(health_data):
-     """
-    Append patient details to a JSON file in a specified folder.
+def create_file(health_data):  
     
-    :param health_data: Dictionary containing patient details to be stored.
-    """
     # Define the path to the JSON file
     #folder_path = 'patient_data'
-    folder_path = 'scheduling_data'
+    folder_path = "scheduling_data"
+    
     file_path = path.join(folder_path, 'health_data.json')
 
     # Ensure the directory exists
