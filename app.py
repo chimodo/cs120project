@@ -83,7 +83,7 @@ def create_file(info, health_data):
     
     # Define the path to the JSON file
     #folder_path = 'patient_data'
-    folder_path = "scheduling_data"
+    folder_path = "vitals_data"
     
     file_path = path.join(folder_path, 'health_data.json')
 
