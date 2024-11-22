@@ -79,7 +79,7 @@ def find_user(info):
 
     return False  # No match found or error occurred
 
-def create_file(health_data):  
+def create_file(info, health_data):  
     
     # Define the path to the JSON file
     #folder_path = 'patient_data'
@@ -100,7 +100,8 @@ def create_file(health_data):
     else:
         data = []  # Initialize with an empty list if the file does not exist
 
-    # Append the new health data to the list
+    # Append the patient info and new health data to the list
+    data.append(info)
     data.append(health_data)
 
     # Write the updated data back to the file
