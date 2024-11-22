@@ -164,5 +164,62 @@
                 "no"
             ]
         }
+    },
+    {
+        "personal_info": {
+            "name": [
+                "John"
+            ],
+            "surname": [
+                "Doe"
+            ],
+            "email": [
+                "john.doe@example.com"
+            ]
+        },
+        "health_data": {
+            "reason": [
+                "blurry-vision",
+                "pink-pain",
+                "other"
+            ],
+            "where": [
+                "OS"
+            ],
+            "onset": [
+                "2024-11-07"
+            ],
+            "eye-exam": [
+                "no"
+            ],
+            "surgeries": [
+                "none"
+            ],
+            "allergies": [
+                "mold",
+                "mold"
+            ],
+            "ocular-histr-self": [
+                "cataract",
+                "glaucoma",
+                "blindness"
+            ],
+            "ocular-histr-fam": [
+                "blindness"
+            ],
+            "medical-histr-self": [
+                "hypertension"
+            ],
+            "medical-histr-fam": [
+                "hypertension"
+            ],
+            "lifestyle": [
+                "drugs",
+                "smoke"
+            ],
+            "screentime>6h": [
+                "no"
+            ]
+        }
     }
 ]
