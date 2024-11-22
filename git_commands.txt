@@ -1,4 +1,4 @@
-1) If youve created a new branch named branch_name on the website, run
+1) If you've created a new branch named branch_name on the website, run
 these commands
     Step 1: Run 'git fetch origin' to fetch remote branches.
     Step 2: Switch to the branch_name branch with 'git checkout branch_name'.

@@ -1,9 +1,12 @@
 from flask import Flask, render_template, request
 import csv
+from json import load, dump, JSONDecodeError
+from os import makedirs, path
+
 # this is just a template that we will build upon
 app = Flask(__name__)
 
-health_data = {} # dictionary will store responses
+info = {} # dictionary will store name, surname, email
 
 @app.route('/', methods = ['GET','POST'])
 def authenticate():
@@ -31,6 +34,7 @@ def get_health_data():
         #print(health_data) # checking if appending to dict successful
         #print(visit_reason)
 
+        create_file(health_data)
         # TODO use file io to store the results into a relevent file
         # (we should probably store the form responses in a file as well.
         # doctors might need that info as well )
@@ -75,11 +79,37 @@ def find_user(info):
 
     return False  # No match found or error occurred
 
-def create_file(health_data):
-    # append patient details from scheduling to json file
-    # you can use the jsonfy function
-    # save it to separate folder
-    pass # temporarily ignore this function
+def create_file(info, health_data):  
+    
+    # Define the path to the JSON file
+    #folder_path = 'patient_data'
+    folder_path = "scheduling_data"
+    
+    file_path = path.join(folder_path, 'health_data.json')
+
+    # Ensure the directory exists
+    makedirs(folder_path, exist_ok=True)
+
+    # Check if the file exists and load existing data
+    if path.exists(file_path):
+        with open(file_path, 'r', encoding='utf-8') as file:
+            try:
+                data = load(file)  # Load existing JSON data
+            except JSONDecodeError:
+                data = []  # Initialize with an empty list if the file is corrupted or empty
+    else:
+        data = []  # Initialize with an empty list if the file does not exist
+
+    # Append the patient info and new health data to the list
+    data.append(info)
+    data.append(health_data)
+
+    # Write the updated data back to the file
+    with open(file_path, 'w', encoding='utf-8') as file:
+        dump(data, file, indent=4)
+
+    print(f"Patient data successfully saved to {file_path}.")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
