@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template,redirect, request
 import csv
 from json import load, dump, JSONDecodeError
 from os import makedirs, path
@@ -7,16 +7,18 @@ from os import makedirs, path
 app = Flask(__name__)
 
 info = {} # dictionary will store name, surname, email
+health_data = {}
 
 @app.route('/', methods = ['GET','POST'])
 def authenticate():
+    global info
     message = ''
     if request.method == "POST":
-        info = request.form.to_dict() # flat = false allows our dictionary to be nested therefore all checkbox choices will be returned
+        info = request.form.to_dict(flat = False) # flat = false allows our dictionary to be nested therefore all checkbox choices will be returned
         # info dictionary format {'name': 'Alice', 'surname': 'Smith', 'email': 'Alice@example.com'}
         print(info)
         if find_user(info): # passed into find user function which looks for the name
-            return render_template("health_form.html")
+            return redirect("health_form.html")
         else:
             message = "Your information does not match our records"
             return render_template("index.html", message = message)
@@ -25,22 +27,24 @@ def authenticate():
 
 @app.route('/health_form.html', methods = ['GET','POST']) # gets data from html form
 def get_health_data():
+    global info
     # Example list of risk factors; you can modify this as needed.
     if request.method == "POST":
+        global health_data
         health_data = request.form.to_dict(flat = False)
         #visit_reason = request.form.getlist('reason[]') # asked chatgpt how to access the list of checkbox results
         #health_data['reason']
         # request form gets all responses from the form. to dict converts it to dictionary
-        #print(health_data) # checking if appending to dict successful
+        print(health_data) # checking if appending to dict successful
         #print(visit_reason)
 
-        create_file(health_data)
+        create_file(info, health_data)
         # TODO use file io to store the results into a relevent file
         # (we should probably store the form responses in a file as well.
         # doctors might need that info as well )
 
         risk_factors = ['High blood pressure', 'Family history of heart disease']
-        return render_template('health_form.html', risk_factors=risk_factors) 
+        return render_template('success.html') 
     return render_template('health_form.html')
 
 
@@ -79,7 +83,10 @@ def find_user(info):
 
     return False  # No match found or error occurred
 
-def create_file(info, health_data):  
+def create_file(info, health_data):
+    # print("here are the dictionaries")
+    # print(info)
+    # print(health_data)
     
     # Define the path to the JSON file
     #folder_path = 'patient_data'
@@ -101,14 +108,21 @@ def create_file(info, health_data):
         data = []  # Initialize with an empty list if the file does not exist
 
     # Append the patient info and new health data to the list
-    data.append(info)
-    data.append(health_data)
+    patient = {}
+    patient["personal_info"] = info
+    patient["health_data"] = health_data
+
+    data.append(patient)
+    # data.append(info)
+    # data.append(health_data)
 
     # Write the updated data back to the file
     with open(file_path, 'w', encoding='utf-8') as file:
         dump(data, file, indent=4)
 
     print(f"Patient data successfully saved to {file_path}.")
+
+#create_file(info, health_data)
 
 
 if __name__ == '__main__':
