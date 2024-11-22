@@ -44,7 +44,7 @@ def get_health_data():
         # doctors might need that info as well )
 
         risk_factors = ['High blood pressure', 'Family history of heart disease']
-        return render_template('health_form.html', risk_factors=risk_factors) 
+        return render_template('success.html') 
     return render_template('health_form.html')
 
 
@@ -108,8 +108,13 @@ def create_file(info, health_data):
         data = []  # Initialize with an empty list if the file does not exist
 
     # Append the patient info and new health data to the list
-    data.append(info)
-    data.append(health_data)
+    patient = {}
+    patient["personal_info"] = info
+    patient["health_data"] = health_data
+
+    data.append(patient)
+    # data.append(info)
+    # data.append(health_data)
 
     # Write the updated data back to the file
     with open(file_path, 'w', encoding='utf-8') as file:

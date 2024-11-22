@@ -1,109 +1,168 @@
 [
     {
-        "name": [
-            "John"
-        ],
-        "surname": [
-            "Doe"
-        ],
-        "email": [
-            "john.doe@example.com"
-        ]
+        "personal_info": {
+            "name": [
+                "John"
+            ],
+            "surname": [
+                "Doe"
+            ],
+            "email": [
+                "john.doe@example.com"
+            ]
+        },
+        "health_data": {
+            "reason": [
+                "blurry-vision",
+                "pink-pain"
+            ],
+            "onset": [
+                "2024-11-07"
+            ],
+            "eye-exam": [
+                "no"
+            ],
+            "surgeries": [
+                "none"
+            ],
+            "allergies": [
+                "mold"
+            ],
+            "ocular-histr-self": [
+                "glaucoma",
+                "blindness"
+            ],
+            "ocular-histr-fam": [
+                "glaucoma"
+            ],
+            "medical-histr-self": [
+                "diabetes",
+                "hypertension"
+            ],
+            "medical-histr-fam": [
+                "hypertension"
+            ],
+            "lifestyle": [
+                "drugs",
+                "smoke"
+            ],
+            "screentime>6h": [
+                "no"
+            ]
+        }
     },
     {
-        "reason": [
-            "redness",
-            "blurry-vision",
-            "pink-eye"
-        ],
-        "onset": [
-            "2024-11-06"
-        ],
-        "eye-exam": [
-            "never"
-        ],
-        "surgeries": [
-            "lasik",
-            "glaucoma"
-        ],
-        "allergies[]": [
-            "animal-dander",
-            "mold"
-        ],
-        "ocular-histr-self": [
-            "cataract",
-            "blindness"
-        ],
-        "ocular-histr-fam": [
-            "cataract"
-        ],
-        "medical-histr-self": [
-            "hypertension",
-            "auto-immune"
-        ],
-        "medical-histr-fam": [
-            "hypertension"
-        ],
-        "lifestyle[]": [
-            "drugs",
-            "smoke"
-        ],
-        "screentime>6h": [
-            "no"
-        ]
+        "personal_info": {
+            "name": [
+                "John"
+            ],
+            "surname": [
+                "Doe"
+            ],
+            "email": [
+                "john.doe@example.com"
+            ]
+        },
+        "health_data": {
+            "reason": [
+                "redness",
+                "blurry-vision",
+                "other"
+            ],
+            "onset": [
+                ""
+            ],
+            "eye-exam": [
+                "never"
+            ],
+            "surgeries": [
+                "none"
+            ],
+            "allergies": [
+                "animal-dander",
+                "mold"
+            ],
+            "ocular-histr-self": [
+                "cataract",
+                "blindness"
+            ],
+            "ocular-histr-fam": [
+                "cataract",
+                "blindness"
+            ],
+            "medical-histr-self": [
+                "diabetes",
+                "hypertension"
+            ],
+            "medical-histr-fam": [
+                "diabetes"
+            ],
+            "lifestyle": [
+                "none"
+            ],
+            "screentime>6h": [
+                "no"
+            ]
+        }
     },
     {
-        "name": [
-            "John"
-        ],
-        "surname": [
-            "Doe"
-        ],
-        "email": [
-            "john.doe@example.com"
-        ]
-    },
-    {
-        "reason": [
-            "redness",
-            "blurry-vision",
-            "pink-pain"
-        ],
-        "onset": [
-            ""
-        ],
-        "eye-exam": [
-            "no"
-        ],
-        "surgeries": [
-            "lasik",
-            "glaucoma"
-        ],
-        "allergies[]": [
-            "animal-dander",
-            "mold",
-            "mold"
-        ],
-        "ocular-histr-self": [
-            "cataract",
-            "glaucoma",
-            "blindness"
-        ],
-        "ocular-histr-fam": [
-            "glaucoma"
-        ],
-        "medical-histr-self": [
-            "diabetes"
-        ],
-        "medical-histr-fam": [
-            "hypertension"
-        ],
-        "lifestyle[]": [
-            "alchohol",
-            "smoke"
-        ],
-        "screentime>6h": [
-            "no"
-        ]
+        "personal_info": {
+            "name": [
+                "John"
+            ],
+            "surname": [
+                "Doe"
+            ],
+            "email": [
+                "john.doe@example.com"
+            ]
+        },
+        "health_data": {
+            "reason": [
+                "blurry-vision",
+                "pink-pain"
+            ],
+            "severity": [
+                "10246"
+            ],
+            "where": [
+                "OS"
+            ],
+            "onset": [
+                ""
+            ],
+            "eye-exam": [
+                "no"
+            ],
+            "surgeries": [
+                "none"
+            ],
+            "allergies": [
+                "mold",
+                "mold"
+            ],
+            "ocular-histr-self": [
+                "cataract",
+                "glaucoma"
+            ],
+            "ocular-histr-fam": [
+                "cataract"
+            ],
+            "medical-histr-self": [
+                "diabetes",
+                "auto-immune"
+            ],
+            "medical-histr-fam": [
+                "hypertension"
+            ],
+            "lifestyle": [
+                "alchohol",
+                "drugs",
+                "smoke"
+            ],
+            "screentime>6h": [
+                "no"
+            ]
+        }
     }
 ]

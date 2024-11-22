@@ -70,7 +70,7 @@
                     </label>
                     <!--onset date-->
                     <div>
-                      <input type = "date" name = "onset">Onset Date
+                      <input type = "date" name = "onset">  Start of symptoms (please give an estimate if unsure)
                     </div><!--end of onset date-->
                 </div>
 
@@ -106,19 +106,19 @@
                 <fieldset>
                     <legend>Do you have any known allergies?</legend>
                     <label>
-                        <input type = "checkbox" name = "allergies[]" value = "pollen"> Pollen
+                        <input type = "checkbox" name = "allergies" value = "pollen"> Pollen
                     </label>
                     <label>
-                        <input type = "checkbox" name = "allergies[]" value = "animal-dander"> Animal Dander
+                        <input type = "checkbox" name = "allergies" value = "animal-dander"> Animal Dander
                     </label>
                     <label>
-                        <input type = "checkbox" name = "allergies[]" value = "mold"> Mold
+                        <input type = "checkbox" name = "allergies" value = "mold"> Mold
                     </label>
                     <label>
-                        <input type = "checkbox" name = "allergies[]" value = "mold"> Other/NA
+                        <input type = "checkbox" name = "allergies" value = "mold"> Other/NA
                     </label>
                 </fieldset>
-                <button>continue</button>
+                <!--button>continue</button-->
                    
             </div><!--end of general div-->
             <!--family history portion-->
@@ -188,7 +188,7 @@
                         <tr>
                           <td><input type="checkbox" name="medical-histr-self" value="auto-immune"></td>
                           <td><input type="checkbox" name="medical-histr-fam" value="auto-immune"></td>
-                          <td><label>Auto imune disease</label></td>
+                          <td><label>Auto immune disease</label></td>
                         </tr>
                         <tr>
                           <td><input type="checkbox" name="medical-histr-self" value="other"></td>
@@ -205,23 +205,23 @@
               <fieldset>
                 <legend>Select all that apply</legend>
                 <label>
-                    <input type = "checkbox" name = "lifestyle[]" value = "alchohol"> Alchohol
+                    <input type = "checkbox" name = "lifestyle" value = "alchohol"> Alchohol
                 </label>
                 <label>
-                    <input type = "checkbox" name = "lifestyle[]" value = "drugs"> Recreational Drugs
+                    <input type = "checkbox" name = "lifestyle" value = "drugs"> Recreational Drugs
                 </label>
                 <label>
-                    <input type = "checkbox" name = "lifestyle[]" value = "smoke"> Smoking
+                    <input type = "checkbox" name = "lifestyle" value = "smoke"> Smoking
                 </label>
                 <label>
-                    <input type = "checkbox" name = "lifestyle[]" value = "none"> None
+                    <input type = "checkbox" name = "lifestyle" value = "none"> None
                     <!--Javascript: please uncheck the others if user clicks none, and vice versa-->
                 </label>
               </fieldset><!--End of lifestyle-->
 
               <!--screentime-->
               <fieldset>
-                <legend>Have you had an eye exam in the past 2 years?</legend>
+                <legend>Do you have an average screentime of 6 hours or more?</legend>
                 <label>
                     <input type = "radio" name = "screentime>6h" value = "yes" id = "screenitme"> Yes
                 </label>
@@ -229,7 +229,7 @@
                     <input type = "radio" name = "screentime>6h" value = "no" id = "screentime"> NO
                 </label>
                 <label>
-                    <input type = "radio" name = "screentime>6h" value = "never" id = "screentime"> I've never looked at a screen
+                    <input type = "radio" name = "screentime>6h" value = "never" id = "screentime"> Never
                 </label>
               </fieldset><!--end of screentime, radio buttons-->
 
