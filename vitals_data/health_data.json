@@ -1,0 +1,109 @@
+[
+    {
+        "name": [
+            "John"
+        ],
+        "surname": [
+            "Doe"
+        ],
+        "email": [
+            "john.doe@example.com"
+        ]
+    },
+    {
+        "reason": [
+            "redness",
+            "blurry-vision",
+            "pink-eye"
+        ],
+        "onset": [
+            "2024-11-06"
+        ],
+        "eye-exam": [
+            "never"
+        ],
+        "surgeries": [
+            "lasik",
+            "glaucoma"
+        ],
+        "allergies[]": [
+            "animal-dander",
+            "mold"
+        ],
+        "ocular-histr-self": [
+            "cataract",
+            "blindness"
+        ],
+        "ocular-histr-fam": [
+            "cataract"
+        ],
+        "medical-histr-self": [
+            "hypertension",
+            "auto-immune"
+        ],
+        "medical-histr-fam": [
+            "hypertension"
+        ],
+        "lifestyle[]": [
+            "drugs",
+            "smoke"
+        ],
+        "screentime>6h": [
+            "no"
+        ]
+    },
+    {
+        "name": [
+            "John"
+        ],
+        "surname": [
+            "Doe"
+        ],
+        "email": [
+            "john.doe@example.com"
+        ]
+    },
+    {
+        "reason": [
+            "redness",
+            "blurry-vision",
+            "pink-pain"
+        ],
+        "onset": [
+            ""
+        ],
+        "eye-exam": [
+            "no"
+        ],
+        "surgeries": [
+            "lasik",
+            "glaucoma"
+        ],
+        "allergies[]": [
+            "animal-dander",
+            "mold",
+            "mold"
+        ],
+        "ocular-histr-self": [
+            "cataract",
+            "glaucoma",
+            "blindness"
+        ],
+        "ocular-histr-fam": [
+            "glaucoma"
+        ],
+        "medical-histr-self": [
+            "diabetes"
+        ],
+        "medical-histr-fam": [
+            "hypertension"
+        ],
+        "lifestyle[]": [
+            "alchohol",
+            "smoke"
+        ],
+        "screentime>6h": [
+            "no"
+        ]
+    }
+]
