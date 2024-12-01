@@ -26,24 +26,24 @@
                     <!--Validation: please make sure at least one checkbox is selected, and that reason and where are not blank-->
                     <label><!--this allows responses to be passed as a list. Got it from: https://wastedpotential.com/html-multi-checkbox-set-the-correct-way-to-group-checkboxes/-->
                         <div class = "hstack gap-3"> <!--pink eye horizontal-->
-                            <input type = "checkbox" name = "reason" value = "redness"> Redness
+                            <input type = "checkbox" name = "reason" value = "pink eye"> Pink eye
                         </div>   
                     </label>
                     <label>
                         <div class = "hstack gap-3">
-                            <input type = "checkbox" name = "reason" value = "blurry-vision"> Blurry Vision
+                            <input type = "checkbox" name = "reason" value = "myopia"> Myopia
                         </div>
                     </label>
                     <label>
                         <div class = "hstack gap-3">
-                            <input type = "checkbox" name = "reason" value = "eye-pain"> Eye Pain
+                            <input type = "checkbox" name = "reason" value = "dry-eye"> Dry eye
                         </div>
                     </label>
                     <label>
                         <div class = "hstack gap-3">
-                            <input type = "checkbox" name = "reason" value = "other"> Other
+                            <input type = "checkbox" name = "reason" value = "general-eye-checkup"> General eye checkup
                             <div class="dropdown">
-                                <button type = "checkbox" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button type = "checkbox" class="btn btn-secondary dropdown-toggle" class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">
                                   Severity
                                 </button>
                                 <!-- </button> -->
@@ -102,6 +102,18 @@
                     <label>
                         <input type = "checkbox" name = "surgeries" value = "none" id = "no-surgery"> None
                     </label>
+                    <div class="dropdown">
+                      <button type = "checkbox" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Select time
+                      </button> How many months since latest surgery
+                      <!-- </button> -->
+                      <ul class="dropdown-menu">
+                        <input class="dropdown-item" type = "radio" name = "months-since-latest-surgery" value = "6+"> 6+
+                        <input class="dropdown-item" type = "radio" name = "months-since-latest-surgery" value = "5">5
+                        <input class="dropdown-item" type = "radio" name = "months-since-latest-surgery" value = "4">4
+                        <input class="dropdown-item" type = "radio" name = "months-since-latest-surgery" value = "3-">3
+                      </ul>
+                    </div>
                 </fieldset>
                 <fieldset>
                     <legend>Do you have any known allergies?</legend>
@@ -115,7 +127,16 @@
                         <input type = "checkbox" name = "allergies" value = "mold"> Mold
                     </label>
                     <label>
-                        <input type = "checkbox" name = "allergies" value = "mold"> Other/NA
+                      <input type = "checkbox" name = "allergies" value = "dust-mites"> Dust Mites
+                    </label>
+                    <label>
+                      <input type = "checkbox" name = "allergies" value = "cosmetics"> Cosmetics
+                    </label>
+                    <label>
+                      <input type = "checkbox" name = "allergies" value = "smoke"> Smoke
+                    </label>
+                    <label>
+                        <input name = "allergies"> Other
                     </label>
                 </fieldset>
                 <!--button>continue</button-->
@@ -152,9 +173,9 @@
                           <td><label>Blindness</label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="ocular-histr-self" value="other"></td>
-                          <td><input type="checkbox" name="ocular-histr-fam" value="other"></td>
-                          <td><label>Other</label></td>
+                          <td><input type="checkbox" name="ocular-histr-self" class = "OtherCheckboxOcular" ></td>
+                          <td><input type="checkbox" name="ocular-histr-fam" class = "OtherCheckboxOcular" ></td>
+                          <td><label><input name = "OcularOther" required oninput="OtherCheckboxOcular(this.value)">Other</label></td>
                         </tr>
                       </tbody>
                     </table>
@@ -191,9 +212,9 @@
                           <td><label>Auto immune disease</label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="medical-histr-self" value="other"></td>
-                          <td><input type="checkbox" name="medical-histr-fam" value="other"></td>
-                          <td><label>Other</label></td>
+                          <td><input type="checkbox" name="medical-histr-self" class = "OtherCheckboxMed" ></td>
+                          <td><input type="checkbox" name="medical-histr-fam" class = "OtherCheckboxMed" ></td>
+                          <td><label><input name = "MedOther" required oninput="OtherCheckboxMed(this.value)">Other</label></td>
                         </tr>
                       </tbody>
                     </table>
@@ -236,7 +257,7 @@
             </div>
 
 
-            <div><input type="submit" value="Submit"></div>
+            <div><input type="submit" value="Submit" class="btn btn-primary"></div>
             
             <!-- Error message display -->
         </form><!--end of form-->
@@ -251,6 +272,24 @@
     <!--link our local script.js-->
     <script src = "static/script.js">
         // I creates a separate file for the javascript
+    </script>
+    <!--script for history portion, this is ai code-->
+    <script>
+      function OtherCheckboxMed(newValue) {
+          // Get all checkboxes with the class 'ocular-histr'
+          const checkboxes = document.querySelectorAll('.OtherCheckboxMed');
+          checkboxes.forEach(checkbox => {
+            checkbox.value = newValue; // Update each checkbox's value
+          });
+        }
+
+        function OtherCheckboxOcular(newValue) {
+          // Get all checkboxes with the class 'ocular-histr'
+          const checkboxes = document.querySelectorAll('.OtherCheckboxOcular');
+          checkboxes.forEach(checkbox => {
+            checkbox.value = newValue; // Update each checkbox's value
+          });
+        }
     </script>
 </body>
 </html>
