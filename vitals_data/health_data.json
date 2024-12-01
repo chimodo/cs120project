@@ -13,11 +13,17 @@
         },
         "health_data": {
             "reason": [
-                "blurry-vision",
-                "pink-pain"
+                "myopia",
+                "dry-eye"
+            ],
+            "severity": [
+                "10246"
+            ],
+            "where": [
+                "OS"
             ],
             "onset": [
-                "2024-11-07"
+                "2024-11-21"
             ],
             "eye-exam": [
                 "no"
@@ -25,80 +31,39 @@
             "surgeries": [
                 "none"
             ],
-            "allergies": [
-                "mold"
-            ],
-            "ocular-histr-self": [
-                "glaucoma",
-                "blindness"
-            ],
-            "ocular-histr-fam": [
-                "glaucoma"
-            ],
-            "medical-histr-self": [
-                "diabetes",
-                "hypertension"
-            ],
-            "medical-histr-fam": [
-                "hypertension"
-            ],
-            "lifestyle": [
-                "drugs",
-                "smoke"
-            ],
-            "screentime>6h": [
-                "no"
-            ]
-        }
-    },
-    {
-        "personal_info": {
-            "name": [
-                "John"
-            ],
-            "surname": [
-                "Doe"
-            ],
-            "email": [
-                "john.doe@example.com"
-            ]
-        },
-        "health_data": {
-            "reason": [
-                "redness",
-                "blurry-vision",
-                "other"
-            ],
-            "onset": [
-                ""
-            ],
-            "eye-exam": [
-                "never"
-            ],
-            "surgeries": [
-                "none"
+            "months-since-latest-surgery": [
+                "5"
             ],
             "allergies": [
                 "animal-dander",
-                "mold"
-            ],
-            "ocular-histr-self": [
-                "cataract",
-                "blindness"
+                "mold",
+                "potatoes"
             ],
             "ocular-histr-fam": [
                 "cataract",
-                "blindness"
+                "glaucoma",
+                "on"
             ],
-            "medical-histr-self": [
-                "diabetes",
-                "hypertension"
+            "ocular-histr-self": [
+                "glaucoma",
+                "on"
+            ],
+            "OcularOther": [
+                "far sightedness"
             ],
             "medical-histr-fam": [
-                "diabetes"
+                "hypertension",
+                "on"
+            ],
+            "medical-histr-self": [
+                "auto-immune",
+                "on"
+            ],
+            "MedOther": [
+                "Migrane"
             ],
             "lifestyle": [
-                "none"
+                "drugs"
             ],
             "screentime>6h": [
                 "no"
@@ -119,8 +84,8 @@
         },
         "health_data": {
             "reason": [
-                "blurry-vision",
-                "pink-pain"
+                "myopia",
+                "dry-eye"
             ],
             "severity": [
                 "10246"
@@ -137,138 +102,34 @@
             "surgeries": [
                 "none"
             ],
+            "months-since-latest-surgery": [
+                "4"
+            ],
             "allergies": [
-                "mold",
-                "mold"
+                "smoke",
+                "potatoes"
             ],
             "ocular-histr-self": [
                 "cataract",
-                "glaucoma"
+                "far sightedness"
             ],
             "ocular-histr-fam": [
-                "cataract"
+                "blindness",
+                "far sightedness"
             ],
-            "medical-histr-self": [
+            "OcularOther": [
+                "far sightedness"
+            ],
+            "medical-histr-fam": [
                 "diabetes",
-                "auto-immune"
-            ],
-            "medical-histr-fam": [
-                "hypertension"
-            ],
-            "lifestyle": [
-                "alchohol",
-                "drugs",
-                "smoke"
-            ],
-            "screentime>6h": [
-                "no"
-            ]
-        }
-    },
-    {
-        "personal_info": {
-            "name": [
-                "John"
-            ],
-            "surname": [
-                "Doe"
-            ],
-            "email": [
-                "john.doe@example.com"
-            ]
-        },
-        "health_data": {
-            "reason": [
-                "blurry-vision",
-                "pink-pain",
-                "other"
-            ],
-            "where": [
-                "OS"
-            ],
-            "onset": [
-                "2024-11-07"
-            ],
-            "eye-exam": [
-                "no"
-            ],
-            "surgeries": [
-                "none"
-            ],
-            "allergies": [
-                "mold",
-                "mold"
-            ],
-            "ocular-histr-self": [
-                "cataract",
-                "glaucoma",
-                "blindness"
-            ],
-            "ocular-histr-fam": [
-                "blindness"
+                "Migrane"
             ],
             "medical-histr-self": [
-                "hypertension"
+                "hypertension",
+                "Migrane"
             ],
-            "medical-histr-fam": [
-                "hypertension"
-            ],
-            "lifestyle": [
-                "drugs",
-                "smoke"
-            ],
-            "screentime>6h": [
-                "no"
-            ]
-        }
-    },
-    {
-        "personal_info": {
-            "name": [
-                "John"
-            ],
-            "surname": [
-                "Doe"
-            ],
-            "email": [
-                "john.doe@example.com"
-            ]
-        },
-        "health_data": {
-            "reason": [
-                "redness",
-                "blurry-vision"
-            ],
-            "severity": [
-                "10247"
-            ],
-            "where": [
-                "OD"
-            ],
-            "onset": [
-                ""
-            ],
-            "eye-exam": [
-                "no"
-            ],
-            "surgeries": [
-                "none"
-            ],
-            "allergies": [
-                "animal-dander",
-                "mold"
-            ],
-            "ocular-histr-fam": [
-                "cataract"
-            ],
-            "ocular-histr-self": [
-                "glaucoma"
-            ],
-            "medical-histr-self": [
-                "diabetes"
-            ],
-            "medical-histr-fam": [
-                "hypertension"
+            "MedOther": [
+                "Migrane"
             ],
             "lifestyle": [
                 "drugs"

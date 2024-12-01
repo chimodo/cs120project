@@ -4,6 +4,9 @@ these commands
     Step 2: Switch to the branch_name branch with 'git checkout branch_name'.
     Step 3: Use 'git branch' to confirm you're on the correct branch.
 
+2) Pull chainges from main or other branches:
+    'git pull origin main'
+
 2) commit changes to a branch
     Check if you're on the right branch: 'git branch'
     Stage your changes: 'git add .'
