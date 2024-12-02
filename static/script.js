@@ -60,36 +60,50 @@ function validate() {
     return isValid;
 }
 
-// Handle "None" option for surgery and lifestyle checkboxes
+// Handle "None" option for surgery and lifestyle checkboxes an also the colapse
 document.addEventListener('DOMContentLoaded', function() {
   // Handle "None" for surgeries
   const noneSurgery = document.getElementById('no-surgery');
   const surgeryOptions = document.querySelectorAll('.surgery-option');
   const collapseSurgeryDate = document.getElementById('collapse-surgery-date');  // the colapse thing from bootstrap. it has to stay open 
   
-  noneSurgery.addEventListener('change', function() {
-      if (noneSurgery.checked) {
-          surgeryOptions.forEach(option => option.checked = false);
-      }
-  });
+//   noneSurgery.addEventListener('change', function() {
+//       if (noneSurgery.checked) {
+//           surgeryOptions.forEach(option => option.checked = false);
+//       }
+//   });
 
-  surgeryOptions.forEach(option => {
-      option.addEventListener('change', function() {
-        const anyChecked = Array.from(surgeryOptions).some(checkbox => checkbox.checked); // if any surgery option is selected
-          if (noneSurgery.checked) {
-              noneSurgery.checked = false;
-          }
-          if (anyChecked){
-            collapseSurgeryDate.classList.add('show'); // Manually show the collapse
-          } else {
-            collapseSurgeryDate.classList.remove('show'); // Manually hide the collapse
-          }
-      });
-  });
 
-  // collapse for reason visit
 
-    
+noneSurgery.addEventListener('change', function() {
+    if (noneSurgery.checked) {
+        surgeryOptions.forEach(option => option.checked = false);
+        collapseSurgeryDate.classList.remove('show');
+    }
+});
+
+surgeryOptions.forEach(option => {
+    option.addEventListener('change', function() {
+      const anyChecked = Array.from(surgeryOptions).some(checkbox => checkbox.checked); // if any surgery option is selected
+        if (noneSurgery.checked) {
+            noneSurgery.checked = false;
+        }
+        if (anyChecked){
+          collapseSurgeryDate.classList.add('show'); // Manually show the collapse
+        } else {
+          collapseSurgeryDate.classList.remove('show'); // Manually hide the collapse
+        }
+    });
+});
+  
+
+
+  // also, clear the date when surgeries are all unselected
+
+  
+
+
+  // collapse for reason visit 
     const generalVisit = document.getElementById('general-eye-checkup');
     const symptomOptions = document.querySelectorAll('.reason-symptom');
     const collapseOnsetDate = document.getElementById('collapse-onset-date');  // the colapse thing from bootstrap. it has to stay open
@@ -120,6 +134,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 collapseOnsetDate.classList.remove('show'); // Hide collapse if no symptoms or general checkup is selected
             }
         }
+    });
+
+    // now with the colapsing, the previous selections have to be cleared
+    const symptomCheckboxes = document.querySelectorAll('.reason-symptom'); // Adjust selector if needed
+    const severityRadios = document.querySelectorAll('input[name="severity"]');
+    const whereRadios = document.querySelectorAll('input[name="where"]');
+    const onsetDateInput = document.querySelector('input[name="onset"]');
+    //const collapseOnsetDate = document.getElementById('collapse-onset-date');
+
+    function clearExtraOptions() {
+        const anyChecked = Array.from(symptomCheckboxes).some(checkbox => checkbox.checked);
+
+        if (!anyChecked) {
+            // Clear all fields and collapse section
+            severityRadios.forEach(radio => (radio.checked = false));
+            whereRadios.forEach(radio => (radio.checked = false));
+            if (onsetDateInput) onsetDateInput.value = '';
+            collapseOnsetDate.classList.remove('show'); // Collapse the section
+        }
+    }
+
+    // Add change listeners to all symptom checkboxes
+    symptomCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', clearExtraOptions);
     });
 
   
