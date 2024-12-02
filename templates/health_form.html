@@ -46,8 +46,8 @@
                     </label>
                     
                     <div class="collapse" id="collapse-onset-date">
-                      <div class = "hstack gap-3">
-                        <div class="dropdown">
+                      <div class = "hstack gap-3" style = "display: inline-block">
+                        <div class="dropdown" >
                             <button type = "button" class="btn btn-secondary dropdown-toggle" class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">
                               Severity
                             </button>
@@ -72,8 +72,9 @@
                               <input class="dropdown-item" type = "radio" name = "where" value = "OS">Left
                               <input class="dropdown-item" type = "radio" name = "where" value = "OU">Both
                             </ul>
-                          </div>      
-                        <div>
+                          </div>
+                              
+                        <div class = "hstack gap-3">
                           <input type = "date" name = "onset" class = "date-input">  Start of symptoms (please give an estimate if unsure)
                         </div><!--end of onset date-->
                       </div><!--end of collapse div-->
@@ -171,8 +172,8 @@
                           <td><label>Blindness</label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="ocular-histr-self" class = "OtherCheckboxOcular" ></td>
-                          <td><input type="checkbox" name="ocular-histr-fam" class = "OtherCheckboxOcular" ></td>
+                          <td><input type="checkbox" name="ocular-histr-self" class = "OtherCheckboxOcular" style = "display: none;"></td>
+                          <td><input type="checkbox" name="ocular-histr-fam" class = "OtherCheckboxOcular" style = "display: none;"></td>
                           <td><label><input name = "OcularOther" oninput="OtherCheckboxOcular(this.value)">Other</label></td>
                         </tr>
                       </tbody>
@@ -210,8 +211,8 @@
                           <td><label>Auto immune disease</label></td>
                         </tr>
                         <tr>
-                          <td><input type="checkbox" name="medical-histr-self" class = "OtherCheckboxMed" ></td>
-                          <td><input type="checkbox" name="medical-histr-fam" class = "OtherCheckboxMed" ></td>
+                          <td><input type="checkbox" name="medical-histr-self" class = "OtherCheckboxMed" style = "display: none;"></td>
+                          <td><input type="checkbox" name="medical-histr-fam" class = "OtherCheckboxMed" style = "display: none;"></td>
                           <td><label><input name = "MedOther" oninput="OtherCheckboxMed(this.value)">Other</label></td>
                         </tr>
                       </tbody>
@@ -274,20 +275,68 @@
     <!--script for history portion, this is ai code-->
     <script>
       function OtherCheckboxMed(newValue) {
-          // Get all checkboxes with the class 'ocular-histr'
-          const checkboxes = document.querySelectorAll('.OtherCheckboxMed');
-          checkboxes.forEach(checkbox => {
-            checkbox.value = newValue; // Update each checkbox's value
-          });
-        }
+      // Get all checkboxes with the class 'OtherCheckboxMed'
+      const checkboxes = document.querySelectorAll('.OtherCheckboxMed');
 
-        function OtherCheckboxOcular(newValue) {
-          // Get all checkboxes with the class 'ocular-histr'
-          const checkboxes = document.querySelectorAll('.OtherCheckboxOcular');
-          checkboxes.forEach(checkbox => {
-            checkbox.value = newValue; // Update each checkbox's value
-          });
-        }
+      // Loop through each checkbox
+      checkboxes.forEach(checkbox => {
+        checkbox.value = newValue; // Update each checkbox's value
+      });
+
+      // Check the input field value and show/hide checkboxes
+      const inputField = document.querySelector('[name="MedOther"]'); // Specify the input field
+      if (inputField.value.trim() !== "") {
+        // If there's text in the input, make the checkboxes visible
+        checkboxes.forEach(checkbox => checkbox.style.display = 'inline-block');
+      } else {
+        // If the input is empty, hide the checkboxes and uncheck them
+        checkboxes.forEach(checkbox => {
+          checkbox.style.display = 'none';
+          checkbox.checked = false; // Uncheck the checkboxes
+        });
+      }
+    }
+
+    function OtherCheckboxOcular(newValue) {
+      // Get all checkboxes with the class 'OtherCheckboxMed'
+      const checkboxes = document.querySelectorAll('.OtherCheckboxOcular');
+
+      // Loop through each checkbox
+      checkboxes.forEach(checkbox => {
+        checkbox.value = newValue; // Update each checkbox's value
+      });
+
+      // Check the input field value and show/hide checkboxes
+      const inputField = document.querySelector('[name="OcularOther"]'); // Specify the input field
+      if (inputField.value.trim() !== "") {
+        // If there's text in the input, make the checkboxes visible
+        checkboxes.forEach(checkbox => checkbox.style.display = 'inline-block');
+      } else {
+        // If the input is empty, hide the checkboxes and uncheck them
+        checkboxes.forEach(checkbox => {
+          checkbox.style.display = 'none';
+          checkbox.checked = false; // Uncheck the checkboxes
+        });
+      }
+    }
+
+      // function OtherCheckboxMed(newValue) {
+      //     // Get all checkboxes with the class 'ocular-histr'
+      //     const checkboxes = document.querySelectorAll('.OtherCheckboxMed');
+      //     checkboxes.forEach(checkbox => {
+      //       checkbox.value = newValue; // Update each checkbox's value           
+      //     });
+      //   }
+
+        
+
+        // function OtherCheckboxOcular(newValue) {
+        //   // Get all checkboxes with the class 'ocular-histr'
+        //   const checkboxes = document.querySelectorAll('.OtherCheckboxOcular');
+        //   checkboxes.forEach(checkbox => {
+        //     checkbox.value = newValue; // Update each checkbox's value
+        //   });
+        // }
     </script>
     <!--Dynamically setting date max to today, so that they cant pick a future date-->
     <script>
