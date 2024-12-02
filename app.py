@@ -32,8 +32,6 @@ def get_health_data():
     if request.method == "POST":
         global health_data
         health_data = request.form.to_dict(flat = False)
-        #visit_reason = request.form.getlist('reason[]') # asked chatgpt how to access the list of checkbox results
-        #health_data['reason']
         # request form gets all responses from the form. to dict converts it to dictionary
         print(health_data) # checking if appending to dict successful
         #print(visit_reason)

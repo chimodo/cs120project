@@ -26,29 +26,29 @@
                     <!--Validation: please make sure at least one checkbox is selected, and that reason and where are not blank-->
                     <label><!--this allows responses to be passed as a list. Got it from: https://wastedpotential.com/html-multi-checkbox-set-the-correct-way-to-group-checkboxes/-->
                         <div class = "hstack gap-3"> <!--pink eye horizontal-->
-                            <input type = "checkbox" name = "reason" value = "pink eye"> Pink eye
+                            <input type = "checkbox" name = "reason" value = "pink eye" class = "reason-symptom"> Pink eye
                         </div>   
                     </label>
                     <label>
                         <div class = "hstack gap-3">
-                            <input type = "checkbox" name = "reason" value = "myopia"> Myopia
+                            <input type = "checkbox" name = "reason" value = "myopia" class = "reason-symptom"> Myopia
                         </div>
                     </label>
                     <label>
                         <div class = "hstack gap-3">
-                            <input type = "checkbox" name = "reason" value = "dry-eye"> Dry eye
+                            <input type = "checkbox" name = "reason" value = "dry-eye" class = "reason-symptom"> Dry eye
                         </div>
                     </label>
                     <label>
                         <div class = "hstack gap-3">
                             <input type = "checkbox" name = "reason" value = "general-eye-checkup"> General eye checkup
                             <div class="dropdown">
-                                <button type = "checkbox" class="btn btn-secondary dropdown-toggle" class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button type = "button" class="btn btn-secondary dropdown-toggle" class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">
                                   Severity
                                 </button>
                                 <!-- </button> -->
                                 <ul class="dropdown-menu">
-                                  <input class="dropdown-item" type = "radio" name = "severity" value = "10245">Urgent
+                                  <input class="dropdown-item" type = "radio" name = "severity" value = "10245" required>Urgent
                                   <input class="dropdown-item" type = "radio" name = "severity" value = "10246">Serious
                                   <input class="dropdown-item" type = "radio" name = "severity" value = "10247">Mild
                                   <input class="dropdown-item" type = "radio" name = "severity" value = "10248">None
@@ -56,12 +56,12 @@
                                 </ul>
                               </div>
                               <div class="dropdown">
-                                <button type = "checkbox" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button type = "button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                   Where
                                 </button>
                                 <!-- </button> -->
                                 <ul class="dropdown-menu">
-                                  <input class="dropdown-item" type = "radio" name = "where" value = "OD">Right
+                                  <input class="dropdown-item" type = "radio" name = "where" value = "OD" required>Right
                                   <input class="dropdown-item" type = "radio" name = "where" value = "OS">Left
                                   <input class="dropdown-item" type = "radio" name = "where" value = "OU">Both
                                 </ul>
@@ -70,7 +70,7 @@
                     </label>
                     <!--onset date-->
                     <div>
-                      <input type = "date" name = "onset">  Start of symptoms (please give an estimate if unsure)
+                      <input type = "date" name = "onset" class = "date-input">  Start of symptoms (please give an estimate if unsure)
                     </div><!--end of onset date-->
                 </div>
 
@@ -102,18 +102,9 @@
                     <label>
                         <input type = "checkbox" name = "surgeries" value = "none" id = "no-surgery"> None
                     </label>
-                    <div class="dropdown">
-                      <button type = "checkbox" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        Select time
-                      </button> How many months since latest surgery
-                      <!-- </button> -->
-                      <ul class="dropdown-menu">
-                        <input class="dropdown-item" type = "radio" name = "months-since-latest-surgery" value = "6+"> 6+
-                        <input class="dropdown-item" type = "radio" name = "months-since-latest-surgery" value = "5">5
-                        <input class="dropdown-item" type = "radio" name = "months-since-latest-surgery" value = "4">4
-                        <input class="dropdown-item" type = "radio" name = "months-since-latest-surgery" value = "3-">3
-                      </ul>
-                    </div>
+                    <div>
+                      <input type = "date" name = "latest-surgery-date" id = "latest-surgery-date" class = "date-input">  When was your latest surgery?
+                    </div><!--end of onset date-->
                 </fieldset>
                 <fieldset>
                     <legend>Do you have any known allergies?</legend>
@@ -175,7 +166,7 @@
                         <tr>
                           <td><input type="checkbox" name="ocular-histr-self" class = "OtherCheckboxOcular" ></td>
                           <td><input type="checkbox" name="ocular-histr-fam" class = "OtherCheckboxOcular" ></td>
-                          <td><label><input name = "OcularOther" required oninput="OtherCheckboxOcular(this.value)">Other</label></td>
+                          <td><label><input name = "OcularOther" oninput="OtherCheckboxOcular(this.value)">Other</label></td>
                         </tr>
                       </tbody>
                     </table>
@@ -214,7 +205,7 @@
                         <tr>
                           <td><input type="checkbox" name="medical-histr-self" class = "OtherCheckboxMed" ></td>
                           <td><input type="checkbox" name="medical-histr-fam" class = "OtherCheckboxMed" ></td>
-                          <td><label><input name = "MedOther" required oninput="OtherCheckboxMed(this.value)">Other</label></td>
+                          <td><label><input name = "MedOther" oninput="OtherCheckboxMed(this.value)">Other</label></td>
                         </tr>
                       </tbody>
                     </table>
@@ -290,6 +281,19 @@
             checkbox.value = newValue; // Update each checkbox's value
           });
         }
+    </script>
+    <!--Dynamically setting date max to today, so that they cant pick a future date-->
+    <script>
+        // Get today's date in YYYY-MM-DD format
+        const today = new Date().toISOString().split('T')[0];
+
+        // Select all date inputs with the 'date-input' class
+        const dateInputs = document.querySelectorAll('.date-input'); // selects both date inputs
+
+        // Apply the maximum date to all selected date inputs
+        dateInputs.forEach(input => {
+          input.max = today;
+        });
     </script>
 </body>
 </html>

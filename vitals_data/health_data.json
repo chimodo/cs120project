@@ -13,8 +13,8 @@
         },
         "health_data": {
             "reason": [
-                "myopia",
-                "dry-eye"
+                "pink eye",
+                "general-eye-checkup"
             ],
             "severity": [
                 "10246"
@@ -23,44 +23,91 @@
                 "OS"
             ],
             "onset": [
-                "2024-11-21"
+                "2024-12-03"
             ],
             "eye-exam": [
                 "no"
             ],
             "surgeries": [
-                "none"
+                "lasik"
             ],
-            "months-since-latest-surgery": [
-                "5"
+            "latest-surgery-date": [
+                "2024-11-24"
             ],
             "allergies": [
                 "animal-dander",
-                "mold",
-                "potatoes"
-            ],
-            "ocular-histr-fam": [
-                "cataract",
-                "glaucoma",
-                "on"
+                ""
             ],
             "ocular-histr-self": [
-                "glaucoma",
-                "on"
+                "cataract"
             ],
             "OcularOther": [
-                "far sightedness"
-            ],
-            "medical-histr-fam": [
-                "hypertension",
-                "on"
+                ""
             ],
             "medical-histr-self": [
-                "auto-immune",
-                "on"
+                "diabetes"
             ],
             "MedOther": [
-                "Migrane"
+                ""
+            ],
+            "lifestyle": [
+                "drugs"
+            ],
+            "screentime>6h": [
+                "no"
+            ]
+        }
+    },
+    {
+        "personal_info": {
+            "name": [
+                "Jane"
+            ],
+            "surname": [
+                "Doe"
+            ],
+            "email": [
+                "jane.doe@example.com"
+            ]
+        },
+        "health_data": {
+            "reason": [
+                "pink eye",
+                "general-eye-checkup"
+            ],
+            "severity": [
+                "10246"
+            ],
+            "where": [
+                "OS"
+            ],
+            "onset": [
+                "2024-11-26"
+            ],
+            "eye-exam": [
+                "no"
+            ],
+            "surgeries": [
+                "lasik"
+            ],
+            "latest-surgery-date": [
+                "2024-11-24"
+            ],
+            "allergies": [
+                "mold",
+                ""
+            ],
+            "ocular-histr-self": [
+                "cataract"
+            ],
+            "OcularOther": [
+                ""
+            ],
+            "medical-histr-self": [
+                "diabetes"
+            ],
+            "MedOther": [
+                ""
             ],
             "lifestyle": [
                 "drugs"
@@ -84,8 +131,9 @@
         },
         "health_data": {
             "reason": [
+                "pink eye",
                 "myopia",
-                "dry-eye"
+                "general-eye-checkup"
             ],
             "severity": [
                 "10246"
@@ -100,36 +148,148 @@
                 "no"
             ],
             "surgeries": [
-                "none"
+                "lasik"
             ],
-            "months-since-latest-surgery": [
-                "4"
+            "latest-surgery-date": [
+                "2024-11-29"
             ],
             "allergies": [
-                "smoke",
-                "potatoes"
+                "animal-dander",
+                ""
+            ],
+            "ocular-histr-self": [
+                "cataract"
+            ],
+            "OcularOther": [
+                ""
+            ],
+            "medical-histr-self": [
+                "diabetes"
+            ],
+            "MedOther": [
+                ""
+            ],
+            "lifestyle": [
+                "drugs"
+            ],
+            "screentime>6h": [
+                "no"
+            ]
+        }
+    },
+    {
+        "personal_info": {
+            "name": [
+                "John"
+            ],
+            "surname": [
+                "Doe"
+            ],
+            "email": [
+                "john.doe@example.com"
+            ]
+        },
+        "health_data": {
+            "reason": [
+                "general-eye-checkup"
+            ],
+            "severity": [
+                "10246"
+            ],
+            "where": [
+                "OS"
+            ],
+            "onset": [
+                "2024-11-25"
+            ],
+            "eye-exam": [
+                "no"
+            ],
+            "surgeries": [
+                "lasik"
+            ],
+            "latest-surgery-date": [
+                "2024-11-26"
+            ],
+            "allergies": [
+                "animal-dander",
+                ""
             ],
             "ocular-histr-self": [
                 "cataract",
-                "far sightedness"
+                "glaucoma"
             ],
             "ocular-histr-fam": [
-                "blindness",
-                "far sightedness"
+                "glaucoma"
             ],
             "OcularOther": [
-                "far sightedness"
+                ""
             ],
             "medical-histr-fam": [
-                "diabetes",
-                "Migrane"
-            ],
-            "medical-histr-self": [
-                "hypertension",
-                "Migrane"
+                "hypertension"
             ],
             "MedOther": [
-                "Migrane"
+                ""
+            ],
+            "lifestyle": [
+                "drugs"
+            ],
+            "screentime>6h": [
+                "no"
+            ]
+        }
+    },
+    {
+        "personal_info": {
+            "name": [
+                "Jane"
+            ],
+            "surname": [
+                "Doe"
+            ],
+            "email": [
+                "jane.doe@example.com"
+            ]
+        },
+        "health_data": {
+            "reason": [
+                "pink eye",
+                "myopia",
+                "general-eye-checkup"
+            ],
+            "severity": [
+                "10246"
+            ],
+            "where": [
+                "OS"
+            ],
+            "onset": [
+                "2024-11-19"
+            ],
+            "eye-exam": [
+                "no"
+            ],
+            "surgeries": [
+                "lasik"
+            ],
+            "latest-surgery-date": [
+                "2023-01-25"
+            ],
+            "allergies": [
+                "animal-dander",
+                ""
+            ],
+            "ocular-histr-self": [
+                "glaucoma"
+            ],
+            "OcularOther": [
+                ""
+            ],
+            "medical-histr-self": [
+                "hypertension"
+            ],
+            "MedOther": [
+                ""
             ],
             "lifestyle": [
                 "drugs"

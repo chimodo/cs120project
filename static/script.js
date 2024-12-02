@@ -23,18 +23,34 @@ function validate() {
       isValid = false;
   }
 
-  // // Prevent form submission if a surgery option is selected
-  // const surgeryChecked = document.querySelectorAll('input[name="surgeries"]:checked').length > 0;
-  // if (surgeryChecked) {
-  //     alert('You cannot select any surgery options. Please uncheck them to proceed.');
-  //     isValid = false;
-  // }
+  // Surgery validation
 
   const surgeryOptions = document.querySelectorAll('input[name="surgeries"]:checked');
   const noneSelected = document.getElementById('no-surgery').checked;
+  const reasonSymptoms = document.querySelectorAll('.reason-symptom:checked');
+  console.log("Reason Symptoms Length:", reasonSymptoms.length);
+  console.log("Reason Symptoms:", reasonSymptoms);
+  let monthsDiff = null
 
-  if (surgeryOptions.length > 0 && !noneSelected) {
-      alert('You have had a recent surgery. Please urgently onsult a doctor about your symptoms as there may be a link.');
+  // Check if surgery date is within 3 months
+  const surgeryDate = document.getElementById('latest-surgery-date') ? document.getElementById('latest-surgery-date').value : null;
+  if (surgeryDate) {
+  const currentDate = new Date();
+  const surgeryDateObj = new Date(surgeryDate);
+  const timeDiff = currentDate - surgeryDateObj; // in milliseconds
+  monthsDiff = timeDiff / (1000 * 3600 * 24 * 30); // Convert to months
+  }
+
+  // If surgery was within the last 3 months
+//   if (monthsDiff <= 3) {
+//     alert('You have had a recent surgery. Please wait at least 1-1.5 years after surgery to create an appointment.');
+//     isValid = false;
+//     return isValid; // Prevent further form submission
+//   }
+//if they selected a surgery option, and at least one of the reason for visit is a symptom, and are
+//3 months or less post op...
+  if (surgeryOptions.length > 0 && !noneSelected && reasonSymptoms.length>0 && monthsDiff <= 3) {
+      alert('Your latest surgery is 3 months or less ago. Please urgently consult a doctor about your symptoms as there may be a link.');
       isValid = false;
   } else if (surgeryOptions.length === 0) {
       alert('Please answer the surgery portion.');
@@ -81,7 +97,20 @@ document.addEventListener('DOMContentLoaded', function() {
           }
       });
   });
+
+    // prevent form submission if validation fails
+    // if (!isValid) {
+    //     event.preventDefault(); // stop form from submitting
+    //   }
 });
+
+document.querySelector('form').addEventListener('submit', function(event) {
+    if (!validate()) {
+        event.preventDefault(); // stop form from submitting
+    }
+});
+
+
 
 /*
 What we need
