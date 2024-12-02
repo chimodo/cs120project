@@ -64,6 +64,7 @@ function validate() {
 document.addEventListener('DOMContentLoaded', function() {
   // Handle "None" for surgeries
   const noneSurgery = document.getElementById('no-surgery');
+  
   const surgeryOptions = document.querySelectorAll('.surgery-option');
   const collapseSurgeryDate = document.getElementById('collapse-surgery-date');  // the colapse thing from bootstrap. it has to stay open 
   
@@ -79,6 +80,8 @@ noneSurgery.addEventListener('change', function() {
     if (noneSurgery.checked) {
         surgeryOptions.forEach(option => option.checked = false);
         collapseSurgeryDate.classList.remove('show');
+
+        
     }
 });
 
@@ -92,6 +95,8 @@ surgeryOptions.forEach(option => {
           collapseSurgeryDate.classList.add('show'); // Manually show the collapse
         } else {
           collapseSurgeryDate.classList.remove('show'); // Manually hide the collapse
+          const surgeryDateInput = document.getElementById('latest-surgery-date'); // clear the date'
+            surgeryDateInput.value = '';
         }
     });
 });
