@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
     generalVisit.addEventListener('change', function() {
         if (generalVisit.checked) {
             // If "General eye checkup" is selected, ensure the collapse section shows
-            collapseOnsetDate.classList.remove('show');
+            collapseOnsetDate.classList.add('show');
         } else {
             // If deselected, check if any symptom is selected
             const anyChecked = Array.from(symptomOptions).some(checkbox => checkbox.checked);

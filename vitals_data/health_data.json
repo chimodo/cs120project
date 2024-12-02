@@ -298,5 +298,50 @@
                 "no"
             ]
         }
+    },
+    {
+        "personal_info": {},
+        "health_data": {
+            "reason": [
+                "general-eye-checkup"
+            ],
+            "severity": [
+                "10246"
+            ],
+            "onset": [
+                "2024-12-01"
+            ],
+            "eye-exam": [
+                "no"
+            ],
+            "surgeries": [
+                "glaucoma"
+            ],
+            "latest-surgery-date": [
+                "2024-12-01"
+            ],
+            "allergies": [
+                "mold",
+                ""
+            ],
+            "ocular-histr-self": [
+                "cataract"
+            ],
+            "OcularOther": [
+                ""
+            ],
+            "medical-histr-self": [
+                "diabetes"
+            ],
+            "MedOther": [
+                ""
+            ],
+            "lifestyle": [
+                "drugs"
+            ],
+            "screentime>6h": [
+                "no"
+            ]
+        }
     }
 ]
