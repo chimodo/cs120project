@@ -26,53 +26,59 @@
                     <!--Validation: please make sure at least one checkbox is selected, and that reason and where are not blank-->
                     <label><!--this allows responses to be passed as a list. Got it from: https://wastedpotential.com/html-multi-checkbox-set-the-correct-way-to-group-checkboxes/-->
                         <div class = "hstack gap-3"> <!--pink eye horizontal-->
-                            <input type = "checkbox" name = "reason" value = "pink eye" class = "reason-symptom"> Pink eye
+                            <input type = "checkbox" name = "reason" value = "pink eye" class = "reason-symptom" data-bs-toggle="collapse" href="#collapse-onset-date"> Pink eye
                         </div>   
                     </label>
                     <label>
                         <div class = "hstack gap-3">
-                            <input type = "checkbox" name = "reason" value = "myopia" class = "reason-symptom"> Myopia
+                            <input type = "checkbox" name = "reason" value = "myopia" class = "reason-symptom" data-bs-toggle="collapse" href="#collapse-onset-date"> Myopia
                         </div>
                     </label>
                     <label>
                         <div class = "hstack gap-3">
-                            <input type = "checkbox" name = "reason" value = "dry-eye" class = "reason-symptom"> Dry eye
+                            <input type = "checkbox" name = "reason" value = "dry-eye" class = "reason-symptom" data-bs-toggle="collapse" href="#collapse-onset-date"> Dry eye
                         </div>
                     </label>
                     <label>
                         <div class = "hstack gap-3">
-                            <input type = "checkbox" name = "reason" value = "general-eye-checkup"> General eye checkup
-                            <div class="dropdown">
-                                <button type = "button" class="btn btn-secondary dropdown-toggle" class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Severity
-                                </button>
-                                <!-- </button> -->
-                                <ul class="dropdown-menu">
-                                  <input class="dropdown-item" type = "radio" name = "severity" value = "10245" required>Urgent
-                                  <input class="dropdown-item" type = "radio" name = "severity" value = "10246">Serious
-                                  <input class="dropdown-item" type = "radio" name = "severity" value = "10247">Mild
-                                  <input class="dropdown-item" type = "radio" name = "severity" value = "10248">None
-                                  <input class="dropdown-item" type = "radio" name = "severity" value = "10249">Unknown
-                                </ul>
-                              </div>
-                              <div class="dropdown">
-                                <button type = "button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                  Where
-                                </button>
-                                <!-- </button> -->
-                                <ul class="dropdown-menu">
-                                  <input class="dropdown-item" type = "radio" name = "where" value = "OD" required>Right
-                                  <input class="dropdown-item" type = "radio" name = "where" value = "OS">Left
-                                  <input class="dropdown-item" type = "radio" name = "where" value = "OU">Both
-                                </ul>
-                              </div>      
-                        </div>
+                            <input type = "checkbox" name = "reason" value = "general-eye-checkup" id = "general-eye-checkup" > General eye checkup
+                        </div >
                     </label>
-                    <!--onset date-->
-                    <div>
-                      <input type = "date" name = "onset" class = "date-input">  Start of symptoms (please give an estimate if unsure)
-                    </div><!--end of onset date-->
-                </div>
+                    
+                    <div class="collapse" id="collapse-onset-date">
+                      <div class = "hstack gap-3">
+                        <div class="dropdown">
+                            <button type = "button" class="btn btn-secondary dropdown-toggle" class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">
+                              Severity
+                            </button>
+                            <!-- </button> -->
+                            <ul class="dropdown-menu">
+                              <input class="dropdown-item" type = "radio" name = "severity" value = "10245">Urgent
+                              <input class="dropdown-item" type = "radio" name = "severity" value = "10246">Serious
+                              <input class="dropdown-item" type = "radio" name = "severity" value = "10247">Mild
+                              <input class="dropdown-item" type = "radio" name = "severity" value = "10248">None
+                              <input class="dropdown-item" type = "radio" name = "severity" value = "10249">Unknown
+                            </ul>
+                          </div>
+                        </div><!--end of hstack div-->
+                        <div class = "hstack gap-3">
+                          <div class="dropdown">
+                            <button type = "button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                              Affected Eye
+                            </button>
+                            <!-- </button> -->
+                            <ul class="dropdown-menu">
+                              <input class="dropdown-item" type = "radio" name = "where" value = "OD">Right
+                              <input class="dropdown-item" type = "radio" name = "where" value = "OS">Left
+                              <input class="dropdown-item" type = "radio" name = "where" value = "OU">Both
+                            </ul>
+                          </div>      
+                        <div>
+                          <input type = "date" name = "onset" class = "date-input">  Start of symptoms (please give an estimate if unsure)
+                        </div><!--end of onset date-->
+                      </div><!--end of collapse div-->
+                  </div>
+                </div> <!--end of general questions-->
 
                 <!--eye exam, radio buttons-->
                 <fieldset>
@@ -89,20 +95,21 @@
                 </fieldset><!--end of eye exam, radio buttons-->
 
                 <fieldset>
-                    <legend>Have you had the following eye surgeries?</legend>
+                    <legend>Have you had the following eye surgeries?</legend> 
                     <label>
-                        <input type = "checkbox" name = "surgeries" value = "cataract" class = "surgery-option"> Cataract
+                        <input type = "checkbox" name = "surgeries" value = "cataract" class = "surgery-option" data-bs-toggle="collapse" href="#collapse-surgery-date"> Cataract
                     </label>
                     <label>
-                        <input type = "checkbox" name = "surgeries" value = "lasik" class = "surgery-option"> LASIK
+                        <input type = "checkbox" name = "surgeries" value = "lasik" class = "surgery-option" data-bs-toggle="collapse" href="#collapse-surgery-date"> LASIK
                     </label>
                     <label>
-                        <input type = "checkbox" name = "surgeries" value = "glaucoma" class = "surgery-option"> Glaucoma
+                        <input type = "checkbox" name = "surgeries" value = "glaucoma" class = "surgery-option" data-bs-toggle="collapse" href="#collapse-surgery-date"> Glaucoma
                     </label>
+                    <!--making this a dropdown type thing. Code based on examples in bootstrap documentation-->
                     <label>
                         <input type = "checkbox" name = "surgeries" value = "none" id = "no-surgery"> None
                     </label>
-                    <div>
+                    <div class="collapse" id="collapse-surgery-date">
                       <input type = "date" name = "latest-surgery-date" id = "latest-surgery-date" class = "date-input">  When was your latest surgery?
                     </div><!--end of onset date-->
                 </fieldset>
@@ -294,6 +301,27 @@
         dateInputs.forEach(input => {
           input.max = today;
         });
+    </script>
+    <!--This script sorts out the collapse problem. selecting alternating options would collapes and ancolapse-->
+    <script> 
+      // document.addEventListener('DOMContentLoaded', function () {
+      //   const surgeryOptions = document.querySelectorAll('.surgery-option');
+      //   const collapseSurgeryDate = document.getElementById('collapse-surgery-date');
+        
+      //   // Add event listeners to all surgery checkboxes
+      //   surgeryOptions.forEach(option => {
+      //     option.addEventListener('change', function () {
+      //       const anyChecked = Array.from(surgeryOptions).some(checkbox => checkbox.checked);
+            
+      //       // If any checkbox is selected, show the collapse; otherwise, hide it
+      //       if (anyChecked) {
+      //         collapseSurgeryDate.classList.add('show'); // Manually show the collapse
+      //       } else {
+      //         collapseSurgeryDate.classList.remove('show'); // Manually hide the collapse
+      //       }
+      //     });
+      //   });
+      // });
     </script>
 </body>
 </html>

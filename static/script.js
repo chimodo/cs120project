@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Handle "None" for surgeries
   const noneSurgery = document.getElementById('no-surgery');
   const surgeryOptions = document.querySelectorAll('.surgery-option');
+  const collapseSurgeryDate = document.getElementById('collapse-surgery-date');  // the colapse thing from bootstrap. it has to stay open 
   
   noneSurgery.addEventListener('change', function() {
       if (noneSurgery.checked) {
@@ -74,11 +75,54 @@ document.addEventListener('DOMContentLoaded', function() {
 
   surgeryOptions.forEach(option => {
       option.addEventListener('change', function() {
+        const anyChecked = Array.from(surgeryOptions).some(checkbox => checkbox.checked); // if any surgery option is selected
           if (noneSurgery.checked) {
               noneSurgery.checked = false;
           }
+          if (anyChecked){
+            collapseSurgeryDate.classList.add('show'); // Manually show the collapse
+          } else {
+            collapseSurgeryDate.classList.remove('show'); // Manually hide the collapse
+          }
       });
   });
+
+  // collapse for reason visit
+
+    
+    const generalVisit = document.getElementById('general-eye-checkup');
+    const symptomOptions = document.querySelectorAll('.reason-symptom');
+    const collapseOnsetDate = document.getElementById('collapse-onset-date');  // the colapse thing from bootstrap. it has to stay open
+  
+    symptomOptions.forEach(option => {
+        option.addEventListener('change', function() {
+          const anyChecked = Array.from(symptomOptions).some(checkbox => checkbox.checked); // if any surgery option is selected
+            if (generalVisit.checked) {
+                collapseOnsetDate.classList.remove('show');
+            }
+            if (anyChecked){
+              collapseOnsetDate.classList.add('show'); // Manually show the collapse
+            } else {
+              collapseOnsetDate.classList.remove('show'); // Manually hide the collapse
+            }
+        });
+    });
+
+    // this handles the general eye checkup option being selected/deselected
+    generalVisit.addEventListener('change', function() {
+        if (generalVisit.checked) {
+            // If "General eye checkup" is selected, ensure the collapse section shows
+            collapseOnsetDate.classList.remove('show');
+        } else {
+            // If deselected, check if any symptom is selected
+            const anyChecked = Array.from(symptomOptions).some(checkbox => checkbox.checked);
+            if (!anyChecked) {
+                collapseOnsetDate.classList.remove('show'); // Hide collapse if no symptoms or general checkup is selected
+            }
+        }
+    });
+
+  
 
   // Handle "None" for lifestyle options
   const noneLifestyle = document.querySelector('input[name="lifestyle"][value="none"]');
