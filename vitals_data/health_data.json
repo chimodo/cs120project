@@ -343,5 +343,217 @@
                 "no"
             ]
         }
+    },
+    {
+        "personal_info": {
+            "name": [
+                "John"
+            ],
+            "surname": [
+                "Doe"
+            ],
+            "email": [
+                "john.doe@example.com"
+            ]
+        },
+        "health_data": {
+            "reason": [
+                "pink eye",
+                "myopia",
+                "general-eye-checkup"
+            ],
+            "severity": [
+                "10246"
+            ],
+            "where": [
+                "OS"
+            ],
+            "onset": [
+                "2024-12-02"
+            ],
+            "eye-exam": [
+                "no"
+            ],
+            "surgeries": [
+                "none"
+            ],
+            "latest-surgery-date": [
+                ""
+            ],
+            "allergies": [
+                "mold",
+                ""
+            ],
+            "ocular-histr-fam": [
+                "glaucoma"
+            ],
+            "OcularOther": [
+                ""
+            ],
+            "medical-histr-self": [
+                "diabetes"
+            ],
+            "MedOther": [
+                ""
+            ],
+            "lifestyle": [
+                "drugs"
+            ],
+            "screentime>6h": [
+                "no"
+            ]
+        }
+    },
+    {
+        "personal_info": {
+            "name": [
+                "John"
+            ],
+            "surname": [
+                "Doe"
+            ],
+            "email": [
+                "john.doe@example.com"
+            ]
+        },
+        "health_data": {
+            "reason": [
+                "general-eye-checkup"
+            ],
+            "onset": [
+                ""
+            ],
+            "eye-exam": [
+                "no"
+            ],
+            "surgeries": [
+                "none"
+            ],
+            "latest-surgery-date": [
+                ""
+            ],
+            "allergies": [
+                "animal-dander",
+                ""
+            ],
+            "ocular-histr-self": [
+                "cataract"
+            ],
+            "OcularOther": [
+                ""
+            ],
+            "medical-histr-self": [
+                "diabetes"
+            ],
+            "MedOther": [
+                ""
+            ],
+            "lifestyle": [
+                "drugs"
+            ],
+            "screentime>6h": [
+                "no"
+            ]
+        }
+    },
+    {
+        "personal_info": {},
+        "health_data": {
+            "reason": [
+                "general-eye-checkup"
+            ],
+            "onset": [
+                ""
+            ],
+            "eye-exam": [
+                "no"
+            ],
+            "surgeries": [
+                "none"
+            ],
+            "latest-surgery-date": [
+                ""
+            ],
+            "allergies": [
+                "mold",
+                ""
+            ],
+            "ocular-histr-self": [
+                "cataract"
+            ],
+            "OcularOther": [
+                ""
+            ],
+            "medical-histr-self": [
+                "diabetes"
+            ],
+            "MedOther": [
+                ""
+            ],
+            "lifestyle": [
+                "drugs"
+            ],
+            "screentime>6h": [
+                "no"
+            ]
+        }
+    },
+    {
+        "personal_info": {
+            "name": [
+                "John"
+            ],
+            "surname": [
+                "Doe"
+            ],
+            "email": [
+                "john.doe@example.com"
+            ]
+        },
+        "health_data": {
+            "reason": [
+                "pink eye"
+            ],
+            "severity": [
+                "10245"
+            ],
+            "where": [
+                "OS"
+            ],
+            "onset": [
+                "2024-12-01"
+            ],
+            "eye-exam": [
+                "never"
+            ],
+            "surgeries": [
+                "glaucoma"
+            ],
+            "latest-surgery-date": [
+                "2023-10-04"
+            ],
+            "allergies": [
+                "mold",
+                ""
+            ],
+            "ocular-histr-self": [
+                "cataract"
+            ],
+            "OcularOther": [
+                ""
+            ],
+            "medical-histr-self": [
+                "diabetes"
+            ],
+            "MedOther": [
+                ""
+            ],
+            "lifestyle": [
+                "drugs"
+            ],
+            "screentime>6h": [
+                "no"
+            ]
+        }
     }
 ]

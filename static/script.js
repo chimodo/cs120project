@@ -9,6 +9,7 @@ function validate() {
       isValid = false;
   }
 
+
   // Allergies validation
   const allergiesChecked = document.querySelectorAll('input[name="allergies"]:checked').length > 0;
   if (!allergiesChecked) {
@@ -32,6 +33,38 @@ function validate() {
   console.log("Reason Symptoms:", reasonSymptoms);
   let monthsDiff = null
 
+  /////surgery date validation but only when a surgery option has been selected
+  // Validate that a date is provided if a surgery option is selected
+const surgeryDateInput = document.getElementById('latest-surgery-date');
+const latestSurgeryDate = surgeryDateInput ? surgeryDateInput.value : null;
+
+if (surgeryOptions.length > 0 && !noneSelected) {
+    if (!latestSurgeryDate) {
+        alert('Please provide the date of your latest surgery.');
+        isValid = false;
+    } else {
+        // Check if the surgery date is valid
+        const currentDate = new Date();
+        const latestSurgeryDateObj = new Date(latestSurgeryDate);
+
+        if (isNaN(latestSurgeryDateObj)) {
+            alert('Please provide a valid date for your latest surgery.');
+            isValid = false;
+        } else {
+            const timeDiff = currentDate - latestSurgeryDateObj; // in milliseconds
+            monthsDiff = timeDiff / (1000 * 3600 * 24 * 30); // Convert to months
+
+            // Warn if symptoms are reported within 3 months post-surgery
+            if (reasonSymptoms.length > 0 && monthsDiff <= 3) {
+                alert('Your latest surgery is 3 months or less ago. Please urgently consult a doctor about your symptoms as there may be a link.');
+                isValid = false;
+            }
+        }
+    }
+}
+
+  ///end of surgery date validation
+
   // Check if surgery date is within 3 months
   const surgeryDate = document.getElementById('latest-surgery-date') ? document.getElementById('latest-surgery-date').value : null;
   if (surgeryDate) {
@@ -41,12 +74,7 @@ function validate() {
   monthsDiff = timeDiff / (1000 * 3600 * 24 * 30); // Convert to months
   }
 
-  // If surgery was within the last 3 months
-//   if (monthsDiff <= 3) {
-//     alert('You have had a recent surgery. Please wait at least 1-1.5 years after surgery to create an appointment.');
-//     isValid = false;
-//     return isValid; // Prevent further form submission
-//   }
+
 //if they selected a surgery option, and at least one of the reason for visit is a symptom, and are
 //3 months or less post op...
   if (surgeryOptions.length > 0 && !noneSelected && reasonSymptoms.length>0 && monthsDiff <= 3) {
@@ -57,9 +85,35 @@ function validate() {
       isValid = false;
   }
 
+  ///// validation for severity, affected eye, onset date
+  if (reasonSymptoms.length > 0) {
+    const severitySelected = document.querySelector('input[name="severity"]:checked');
+    const onsetDate = document.querySelector('input[name="onset"]');
+    const affectedEyeSelected = document.querySelector('input[name="where"]:checked');
+
+    if (!severitySelected) {
+        alert('Please select a severity level for your symptoms.');
+        isValid = false;
+    }
+
+    if (!onsetDate || !onsetDate.value) {
+        alert('Please provide an onset date for your symptoms.');
+        isValid = false;
+    }
+
+    if (!affectedEyeSelected) {
+        alert('Please select which eye is affected.');
+        isValid = false;
+    }
+}
+  /////end of validation for severity, affected eye, onset date
+
     return isValid;
 }
 
+//__________________________________________________________________________________
+
+// Handle form component behavior //////////////////////////////////////////////
 // Handle "None" option for surgery and lifestyle checkboxes an also the colapse
 document.addEventListener('DOMContentLoaded', function() {
   // Handle "None" for surgeries
@@ -68,13 +122,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const surgeryOptions = document.querySelectorAll('.surgery-option');
   const collapseSurgeryDate = document.getElementById('collapse-surgery-date');  // the colapse thing from bootstrap. it has to stay open 
   
-//   noneSurgery.addEventListener('change', function() {
-//       if (noneSurgery.checked) {
-//           surgeryOptions.forEach(option => option.checked = false);
-//       }
-//   });
-
-
 
 noneSurgery.addEventListener('change', function() {
     if (noneSurgery.checked) {
@@ -101,13 +148,8 @@ surgeryOptions.forEach(option => {
     });
 });
   
-
-
   // also, clear the date when surgeries are all unselected
-
-  
-
-
+////////////// colapse portion
   // collapse for reason visit 
     const generalVisit = document.getElementById('general-eye-checkup');
     const symptomOptions = document.querySelectorAll('.reason-symptom');
@@ -115,30 +157,14 @@ surgeryOptions.forEach(option => {
   
     symptomOptions.forEach(option => {
         option.addEventListener('change', function() {
-          const anyChecked = Array.from(symptomOptions).some(checkbox => checkbox.checked); // if any surgery option is selected
-            if (generalVisit.checked) {
-                collapseOnsetDate.classList.remove('show');
-            }
-            if (anyChecked){
+          const anyChecked = Array.from(symptomOptions).some(checkbox => checkbox.checked); // if any surgery option is selected    
+             if (anyChecked){
               collapseOnsetDate.classList.add('show'); // Manually show the collapse
-            } else {
-              collapseOnsetDate.classList.remove('show'); // Manually hide the collapse
+
+            } else{
+               collapseOnsetDate.classList.remove('show'); // Manually hide the collapse
             }
         });
-    });
-
-    // this handles the general eye checkup option being selected/deselected
-    generalVisit.addEventListener('change', function() {
-        if (generalVisit.checked) {
-            // If "General eye checkup" is selected, ensure the collapse section shows
-            collapseOnsetDate.classList.add('show');
-        } else {
-            // If deselected, check if any symptom is selected
-            const anyChecked = Array.from(symptomOptions).some(checkbox => checkbox.checked);
-            if (!anyChecked) {
-                collapseOnsetDate.classList.remove('show'); // Hide collapse if no symptoms or general checkup is selected
-            }
-        }
     });
 
     // now with the colapsing, the previous selections have to be cleared
@@ -147,6 +173,7 @@ surgeryOptions.forEach(option => {
     const whereRadios = document.querySelectorAll('input[name="where"]');
     const onsetDateInput = document.querySelector('input[name="onset"]');
     //const collapseOnsetDate = document.getElementById('collapse-onset-date');
+    
 
     function clearExtraOptions() {
         const anyChecked = Array.from(symptomCheckboxes).some(checkbox => checkbox.checked);
@@ -157,6 +184,7 @@ surgeryOptions.forEach(option => {
             whereRadios.forEach(radio => (radio.checked = false));
             if (onsetDateInput) onsetDateInput.value = '';
             collapseOnsetDate.classList.remove('show'); // Collapse the section
+            symptom_checked = false//
         }
     }
 
@@ -184,13 +212,11 @@ surgeryOptions.forEach(option => {
           }
       });
   });
-
-    // prevent form submission if validation fails
-    // if (!isValid) {
-    //     event.preventDefault(); // stop form from submitting
-    //   }
 });
 
+//________________________________________________________________________
+
+///// finally, stop submission if form is not valid
 document.querySelector('form').addEventListener('submit', function(event) {
     if (!validate()) {
         event.preventDefault(); // stop form from submitting
