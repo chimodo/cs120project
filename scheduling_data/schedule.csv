@@ -1,4 +1,4 @@
-name,surname,email
+first-name,last-name,email
 Alice,Smith,alice@example.com
 John,Doe,john.doe@example.com
 Jane,Doe,jane.doe@example.com

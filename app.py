@@ -32,6 +32,15 @@ def get_health_data():
     if request.method == "POST":
         global health_data
         health_data = request.form.to_dict(flat = False)
+
+        # clean up the health data dictionary by removing unnecesary information
+        # these "other" options end up in relevent key value pairs either way, so they are redundant.
+        del health_data["MedOther"]
+        del health_data["OcularOther"]
+
+        # remove empty string in allergies
+        health_data["allergies"].remove("") # now the dictioary is clean withonly relevant info
+
         # request form gets all responses from the form. to dict converts it to dictionary
         print(health_data) # checking if appending to dict successful
         #print(visit_reason)

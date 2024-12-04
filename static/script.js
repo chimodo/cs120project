@@ -89,7 +89,7 @@ if (surgeryOptions.length > 0 && !noneSelected) {
   if (reasonSymptoms.length > 0) {
     const severitySelected = document.querySelector('input[name="severity"]:checked');
     const onsetDate = document.querySelector('input[name="onset"]');
-    const affectedEyeSelected = document.querySelector('input[name="where"]:checked');
+    const affectedEyeSelected = document.querySelector('input[name="affected-eye"]:checked');
 
     if (!severitySelected) {
         alert('Please select a severity level for your symptoms.');
