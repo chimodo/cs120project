@@ -10,16 +10,25 @@ This project aims to create a health data collection form with validation and ba
 
 This function checks if a user exists in the `users.csv` file by matching the user's name, surname, and email. If a match is found, it returns `True`; otherwise, it returns `False`.
 
+snippet from the find_user function:
 ```python
-def find_user(info):
-    with open("users.csv", mode="r") as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            if (row["Name"] == info["Name"] and
-                row["Surname"] == info["Surname"] and
-                row["Email"] == info["Email"]):
-                return True
-    return False
+            # Loop through each row in the CSV
+            for row in reader:
+                matches = True
+                for key, value in info.items():
+                    row_value = row[key].strip().lower()  # Remove any leading/trailing spaces and lower case
+                    search_value = value[0].strip().lower() if isinstance(value, list) else value.strip().lower()
+                    
+                    if row_value != search_value:
+                        matches = False
+                        break
+
+                if matches:
+                    return True  # Found a match
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+    return False  # No match found or error occurred
 ```
 
 ---
@@ -28,15 +37,16 @@ def find_user(info):
 
 This route processes the health data form submission. When the form is submitted, it collects and stores the data in a JSON file.
 
+snippet from the function:
 ```python
-@app.route('/health_form.html', methods=['GET', 'POST'])
-def get_health_data():
-    if request.method == 'POST':
-        info = request.form.to_dict(flat=False)  # Collect user health data
-        health_data = request.form.to_dict(flat=False)  # Collect health-specific data
-        create_file(info, health_data)  # Store the data in a JSON file
-        return render_template('success.html')
-    return render_template('health_form.html')
+    if request.method == "POST":
+        global health_data
+        health_data = request.form.to_dict(flat = False)
+
+        # clean up the health data dictionary by removing unnecesary information
+        # these "other" options end up in relevent key value pairs either way, so they are redundant.
+        del health_data["MedOther"]
+        del health_data["OcularOther"]
 ```
 
 ---
