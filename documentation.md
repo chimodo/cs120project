@@ -1,4 +1,4 @@
-# Project Documentation
+# Project Documentation: Vitals Team
 
 ## Introduction
 
